@@ -46,11 +46,19 @@
  *
  *   floating-point types: float, double, decimal
  *
+ * Integer divide produces two results: a quotient and remainder
+ *                                      quotient - evenly divided value
+ *                                      remainder - what is left over
+ *                                      the quotient is returned as the result
+ *
+ *          11 / 3 - quotient of 3 with a remainder of 2
+ *                 - result is 3
+ *
  *****************************************************************z*********************************/
 /****************************************************************************************************
  * Background information - Casting
  *
- * Casting: Programmer controlled data conversion for teh duration of an expression
+ * Casting: Programmer controlled data conversion for the duration of an expression
  *
  * A Programmer may initiate the temporary conversion of a value to a data type
  *              using a programming technique called casting.
@@ -272,8 +280,8 @@ namespace Day_1_Exercise_Strings_Numbers_Console_Frank
             // If 11 and 5 are entered, the result is 2 NOT 2.2
             Console.WriteLine(intValue1 + " divided by " + intValue2 + " is: " + intValue1 / intValue2);
 
-            // If 11 and 5 are entered and either or bot are cast to a float or double, the result is 2.2
-            Console.WriteLine(intValue1 + " divided by " + intValue2 + " is: " + (decimal) intValue1 / intValue2);
+            // If 11 and 5 are entered and either or both are cast to a float or double, the result is 2.2
+            Console.WriteLine(intValue1 + " divided by " + intValue2 + " is: " + (float) intValue1 / intValue2);
 
             /************************************************************************************************
               EXERCISE 1.7: Entering booleans

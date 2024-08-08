@@ -5,3 +5,10 @@ C:\Users\frank\workspace\wip\Day-1-Exercise-Strings-Numbers-Console-Frank\obj\De
 C:\Users\frank\workspace\wip\Day-1-Exercise-Strings-Numbers-Console-Frank\obj\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.csproj.CoreCompileInputs.cache
 C:\Users\frank\workspace\wip\Day-1-Exercise-Strings-Numbers-Console-Frank\obj\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.exe
 C:\Users\frank\workspace\wip\Day-1-Exercise-Strings-Numbers-Console-Frank\obj\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.pdb
+C:\Users\frank\workspace\classwork\Unit-2-Fundamental-C#\Day-1-Exercise-Strings-Numbers-Console-Frank\bin\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.exe.config
+C:\Users\frank\workspace\classwork\Unit-2-Fundamental-C#\Day-1-Exercise-Strings-Numbers-Console-Frank\bin\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.exe
+C:\Users\frank\workspace\classwork\Unit-2-Fundamental-C#\Day-1-Exercise-Strings-Numbers-Console-Frank\bin\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.pdb
+C:\Users\frank\workspace\classwork\Unit-2-Fundamental-C#\Day-1-Exercise-Strings-Numbers-Console-Frank\obj\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.csproj.AssemblyReference.cache
+C:\Users\frank\workspace\classwork\Unit-2-Fundamental-C#\Day-1-Exercise-Strings-Numbers-Console-Frank\obj\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.csproj.CoreCompileInputs.cache
+C:\Users\frank\workspace\classwork\Unit-2-Fundamental-C#\Day-1-Exercise-Strings-Numbers-Console-Frank\obj\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.exe
+C:\Users\frank\workspace\classwork\Unit-2-Fundamental-C#\Day-1-Exercise-Strings-Numbers-Console-Frank\obj\Debug\Day-1-Exercise-Strings-Numbers-Console-Frank.pdb

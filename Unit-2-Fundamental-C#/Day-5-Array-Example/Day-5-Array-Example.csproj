@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{353D75D2-056A-47F9-B104-929215725F86}</ProjectGuid>
+    <ProjectGuid>{BBDAA855-8D4B-454A-92BD-01115373DF5D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Day_5_Pass_By_Reference_Value</RootNamespace>
-    <AssemblyName>Day-5-Pass-By-Reference-Value</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>Day_5_Array_Example</RootNamespace>
+    <AssemblyName>Day-5-Array-Example</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>

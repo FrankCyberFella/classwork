@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Day-5-Pass-By-Reference-Value")]
+[assembly: AssemblyTitle("Day-5-Array-Example")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Day-5-Pass-By-Reference-Value")]
+[assembly: AssemblyProduct("Day-5-Array-Example")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("353d75d2-056a-47f9-b104-929215725f86")]
+[assembly: Guid("bbdaa855-8d4b-454a-92bd-01115373df5d")]
 
 // Version information for an assembly consists of the following four values:
 //

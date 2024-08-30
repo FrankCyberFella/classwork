@@ -1,9 +1,23 @@
 ﻿using System;
 
+// a namespace is group of related things whose name and purpose is defined in the namespace
+//    Allow things be named the same in have different meaning depending on their context
+//
+//    Like the word: read  pronounced "red"  or "reed" depending on the context
+//
 namespace GeneralPurposeFunctions
 {
+    // a class is a group of related parts of an application
+    // a class is used to instantiate/create objects to be used in the application
+    // Object-Oriented Programs depends on objects which described by classes
+
     public class CommonlyUsedFunctions
     {
+        // If no constructor is supplied for a class C# defines a 0-arg ctor
+        // that sets all data to standard defaults: null for object, 0 for numeric. false for boolean
+
+        // This class has no data so there is nothing to initialize - no constructor needed
+
         /************************************************************************************
          * Display a separator line block with a message
          ************************************************************************************/

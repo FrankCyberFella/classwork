@@ -1,8 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using GeneralPurposeFunctions;
-using StarTrekStuff;
+﻿using System;                     // Give access to the System
+using System.Collections.Generic; // Give access to generic collectiosn stiff
+using System.Linq;                // Give me access to Linq
+
+// Using some programmer defined code 
+//       The code in is files included in the project fold  er
+
+// using namespace;
+using GeneralPurposeFunctions; // Give me access to the GeneralPurposeFunction (namespace) stuff
+using StarTrekStuff;           // Give access to the StarTrekStuff (namespace) stuff
 
 namespace Day_1_Linq_with_Classes
 {
@@ -14,9 +19,22 @@ namespace Day_1_Linq_with_Classes
         //      (instead of passing as a parameter to methods that need access to it)
         // It must be made static because it's used in static methods like Main()
 
-        static CommonlyUsedFunctions commonCode = new CommonlyUsedFunctions();
+        // Give me an object containing the CommonlyUsedFunctions code
+        // Objects are needed to perform object oriented programming
+        // Use an Object to access methods defined in the class for the object
 
-        static List<StarFleetPersonnel> castOfPeople = new List<StarFleetPersonnel>();
+        //     data-type             name       = new datatype();
+        static CommonlyUsedFunctions commonCode = new CommonlyUsedFunctions(); // Run the 0-arg constructor
+
+
+        // Give me a List of StarFleetPersonel objects
+        // You have done: List<string>  names        = new List<string>();
+        static List<StarFleetPersonnel> castOfPeople = new List<StarFleetPersonnel>(); // run 0-arg construtor
+
+        // Define array of StarFLeetPersonnel
+
+        private static StarFleetPersonnel[] starTrekFolks = new StarFleetPersonnel[5];
+
 
         static void Main(string[] args)
         {
@@ -26,6 +44,7 @@ namespace Day_1_Linq_with_Classes
             // Call a method to load the List that holding our data
             LoadData();
 
+            // Using the CommonlyUsedFUnctions object to access a method in it's class
             commonCode.WriteSeparatorLine("List of People in our List");
 
             foreach (StarFleetPersonnel aPerson in castOfPeople)
@@ -61,12 +80,18 @@ namespace Day_1_Linq_with_Classes
                 //              from the List that made the condition true
                 //
                 // Note use of var type to hold the result of .Where()
-
+                //
+                // Use use an Object Reference to access things in an object
+                //
+                // Reference object:   objectName.some-thing-in-the-class
+                //
+                // anEntry is a StarFleetPersonnel object
+                //    name is a variable defined in that StarFleetPersonnel object
                 var matchingEntries =
                     castOfPeople.Where(anEntry => anEntry.name.ToLower().Contains(searchString.ToLower()));
 
                 // At this point the matchingEntries variable hold all List entries that match the condition
-
+     //          object.method()
                 Console.WriteLine(("\n" + matchingEntries.Count()) + " entries found matching \'" + searchString +
                                   "\'");
 
@@ -97,6 +122,9 @@ namespace Day_1_Linq_with_Classes
          ************************************************************************************/
         static void LoadData()
         {
+            //castOfPeople.Add(new StarFleetPersonnel()); // Add a default person - error non 0-arg constructor
+            // Use the List of StarFLeetPersonnel object to add people to the List
+            //  using the 3-arg constructor for the class
             castOfPeople.Add(new StarFleetPersonnel("James T Kirk", "Captain", "NCC-1701"));
             castOfPeople.Add(new StarFleetPersonnel("Jean Luc Picard", "Captain", "NCC-1701-D"));
             castOfPeople.Add(new StarFleetPersonnel("Jonathan Archer", "Captain", "NX-01"));

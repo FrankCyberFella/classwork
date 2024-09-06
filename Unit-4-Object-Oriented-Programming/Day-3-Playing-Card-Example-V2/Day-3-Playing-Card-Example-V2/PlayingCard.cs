@@ -43,8 +43,12 @@ namespace Day_3_Playing_Card_Example_V2
         public int CardValue  // name is the data member in PascalCase
         {
             get { return cardValue; }   // getter - return the value in cardValue
-            set { cardValue = value;}   // setter - set cardValue to value used when assigning
-                                        //          value is keyword representing the value assigned        
+            set                         // setter - set cardValue to value used when assigning
+            {
+                cardValue = value;      //          value is keyword representing the value assigned
+                ValidateValue();
+            }   
+                                               
         }
         public string CardSuit  // name is the data member in PascalCase
         {
@@ -74,10 +78,20 @@ namespace Day_3_Playing_Card_Example_V2
         // Constructors:   public, same name as class, no return type, may have parameters
 
         // Constructor to initialize all instance variables
+        // Note: Color is NOT provided by the user
+        //       we decide color based on suit
         public PlayingCard(int theValue, string theSuit)
         {
             cardValue = theValue;  // initialize value to value passed 
+            ValidateValue();       // Check to be sure value is valid
+
             cardSuit  = theSuit;   // initialize suit to suit passed  
+            // Check to see if the suit is valid... if not, set to default suit - "Spades"
+            if (!ValidateSuit())
+            {
+                cardSuit = "Spades";
+            }
+            // cardSuit must be set to a valid suit before we try to set the color
             setColor();            // set cardColor based on suit
         }
 
@@ -98,6 +112,8 @@ namespace Day_3_Playing_Card_Example_V2
         /**************************************************************************
          * Class methods define the behavior of the class
          *************************************************************************/
+        // This method is private so that only members of the class can use it
+        //  i.e. users of the class can't use it or even see
         private void setColor()
         {
             Dictionary<string, string> suitColors = new Dictionary<string, string>();
@@ -107,7 +123,37 @@ namespace Day_3_Playing_Card_Example_V2
             suitColors.Add("Diamonds", "Red");
             suitColors.Add("Spades"  , "Black");
 
-            cardColor = suitColors[cardSuit];
+            cardColor = suitColors[cardSuit];  // Set color based on suit
+        }  // End of SetColor)
+
+        private bool ValidateSuit()
+        {
+            // Check to see if the suit provided by the user is valid or not
+            switch (cardSuit)
+            {
+                // Stacked case are like an series of ==/or
+                case "Spades":    // If the
+                case "Clubs":     //    suit given
+                case "Hearts":    //       is one
+                case "Diamonds":  //          we want...
+                {
+                    return true;  // return true
+                }
+                default:          // if not one we want...
+                {
+                    return false; // return false
+                }
+            }
+        }  // End of ValidateSuit()
+
+        // Check the cardValue we were given and set to default value if invalid
+        public void ValidateValue()
+        {
+            // If the card value is not between a Joker (0) and a King (13)
+            if (cardValue < 0 || cardValue > 13)
+            {
+                cardValue = 0;  // Set the value to a Joker (default value)
+            }
         }
 
         /**************************************************************************************
@@ -116,6 +162,17 @@ namespace Day_3_Playing_Card_Example_V2
          * System methods you should override:
          *
          *     public string ToString()         - Return a string representation of an object
+         *     public bool   Equals(Object obj) - Compares the content of objects
+         *                                        The default .Equals() compares locations
+         *                                            NOT the content
+         *     public int    GetHashCode()      - Generates a unique for the object using the
+         *                                        data members in the object.
+         *                                        A HashCode is used in several places in C# to
+         *                                        to determine if two objects are equal.
+         *                                        The default GetHashCode() method generates the
+         *                                        value using the location of the object not the content
+         *                                        the values should be equal if the content is equal,
+         *                                            but won't be
          **************************************************************************************/
 
         // Override the default ToString() method
@@ -141,5 +198,38 @@ namespace Day_3_Playing_Card_Example_V2
             return $"PlayingCard: Value={cardValue}, Color={cardColor}, Suit={cardSuit}";
         }
 
+        // .Equals override to compare the contents of our objects
+        // type override (and maybe space) it should show you the format for overrides
+        // Note: .Equals receives a generic object as a parameter
+        //       you must either cast the object to class at every use
+        //        ot define an object of the cass to use in teh method
+        public override bool Equals(object otherObject)
+        {
+            // Define a reference to the generic we are passed so we can use it
+            PlayingCard theOtherCard = (PlayingCard)otherObject;
+
+            // If all data members between the two objects are equal, the objects are equal
+            // this. represents the object to left of the . when method was called:
+            //     card1.Equals(card2) - .this represents card1, otherObject  represents card2
+            if (theOtherCard.cardColor  == this.cardColor
+            &&  theOtherCard.cardSuit   == this.cardSuit
+            &&  theOtherCard.cardValue  == this.cardValue)
+            {
+                return true;
+            }
+            return false; ;
+        } // End of .Equals()
+
+        // Override the GetHashCOde() to generate a unique value for data in out class
+        //
+        // A HashCode can be easily created using the sum of:
+        //
+        //       numeric-values * prime-number
+        //       string, bool, object - use the GetHashCode() defined for them
+        //
+        public override int GetHashCode()
+        {
+            return cardValue * 17 + cardColor.GetHashCode() + cardSuit.GetHashCode();
+        }
     }  // End of PlayingCard class
 } // End of namespace

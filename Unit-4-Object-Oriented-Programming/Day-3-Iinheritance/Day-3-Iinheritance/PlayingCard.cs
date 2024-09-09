@@ -24,7 +24,7 @@ namespace Day_3_Inheritance
         // Instance variables are private to implement Encapsulation
         //      (protect data from access outside the class)
 
-        private int cardValue;
+        private int    cardValue;
         private string cardSuit;
         private string cardColor;
 
@@ -42,9 +42,9 @@ namespace Day_3_Inheritance
         // Define properties for access to data members
         public int CardValue // name is the data member in PascalCase
         {
-            get { return cardValue; } // getter - return the value in cardValue
+            get { return cardValue; }  // getter - return the value in cardValue
             set { cardValue = value; } // setter - set cardValue to value used when assigning
-            //          value is keyword representing the value assigned        
+                                       //          value is keyword representing the value assigned        
         }
 
         public string CardSuit // name is the data member in PascalCase
@@ -78,7 +78,7 @@ namespace Day_3_Inheritance
         public PlayingCard(int theValue, string theSuit, string theColor)
         {
             cardValue = theValue; // initialize value to value passed 
-            cardSuit = theSuit;   // initialize suit to suit passed  
+            cardSuit  = theSuit;  // initialize suit to suit passed  
             cardColor = theColor; // initialize the color to the color passed
         }
 

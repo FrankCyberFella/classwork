@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmericanPlayingCard.cs" />
     <Compile Include="GeneralPurposeFunctions.cs" />
     <Compile Include="PlayingCard.cs" />
     <Compile Include="Program.cs" />

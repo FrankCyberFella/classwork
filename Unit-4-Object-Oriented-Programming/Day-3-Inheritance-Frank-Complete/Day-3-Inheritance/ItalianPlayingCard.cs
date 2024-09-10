@@ -32,8 +32,9 @@ namespace Day_3_Inheritance
                                               "unknown", "unknown", "Ten", "Fanta" , "Cavallo", "Re"
                                             //   8           9        10     11         12       13
                                         };
-
-            private List<int> invalidCardValues = new List<int>() { 8,9 };
+            // Since not all values between 0 and 13 are valid
+            // This List wil be used to determin the invalid values
+            private List<int> invalidCardValues = new List<int>() { 8, 9 };
 
             // Default Constructor for an ItalianPlayingCard
             //     it must call the base() to initialize the base class
@@ -80,10 +81,10 @@ namespace Day_3_Inheritance
             // It is private so access is limited to members of this class
             private bool ValidateCardValue()
             {
-                if ((base.CardValue < MIN_CARD_VALUE || base.CardValue > MAX_CARD_VALUE)
-                ||  (invalidCardValues.Contains(base.CardValue)))
+                if ((base.CardValue < MIN_CARD_VALUE || base.CardValue > MAX_CARD_VALUE)  // Outside valid range
+                ||  (invalidCardValues.Contains(base.CardValue)))                         // or is invalid
                 {
-                    return false;
+                    return false;                                                         //    say it's invalid
                 }
 
                 return true;

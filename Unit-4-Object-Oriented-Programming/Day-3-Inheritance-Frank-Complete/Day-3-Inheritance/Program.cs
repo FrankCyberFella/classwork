@@ -49,9 +49,8 @@ namespace Day_3_Inheritance
             Console.WriteLine($"newCard is: {newCard}");
             Console.WriteLine($"  aCard is: {aCard}");
 
-
             /*******************************************************************************
-             * Inheritance usage start here
+             * Day-4 Inheritance usage start here
              ******************************************************************************/
 
             /*******************************************************************************
@@ -64,12 +63,20 @@ namespace Day_3_Inheritance
             AmericanPlayingCard theCard = new AmericanPlayingCard(10, "Spades");
             
             // This will use the PlayingCard ToString() method to convert theCard to a string
+            // Since the AmericanPlayingCard does not have a ToString() method override
+            //      when C# needs to ger a string representation of an AmericanPlayingCard
+            //      it will use the ToString() in its base class
+            //      (or the generic Object ToString() if base class doesn't have one)
+
             Console.WriteLine($"theCard: {theCard}");
 
             AmericanPlayingCard theCard2 = new AmericanPlayingCard(10, "Spades");
 
-
             // This will use the PlayingCard .Equals() method
+            // Since the AmericanPlayingCard does not have a Equals() method override
+            //      when C# needs to use an Equals() method for an AmericanPlayingCard
+            //      it will use the Equals() in its base class
+            //      (or the generic Object Equals() if base class doesn't have one)
             if (theCard.Equals(theCard2))
             {
                 Console.WriteLine("They are EQUAL");
@@ -108,7 +115,7 @@ namespace Day_3_Inheritance
 
             Console.Write($" 2nd card: {usaCard2.CardValue} ({usaCard2.GetCardValueName()}) of {usaCard2.CardSuit}\n");
 
-            myFuncs.WriteSeparatorLine("Instantiate and display a valid AmericanPlayingCard");
+            myFuncs.PauseProgram();
 
             /*******************************************************************************
              * ItalianPlayingCard Usage Examples
@@ -140,6 +147,8 @@ namespace Day_3_Inheritance
             Console.Write($"{(italianCard1.Equals(italianCard2) ? " is EQUAL" : " is NOT equal")} to");
 
             Console.Write($" 2nd card: {italianCard2.CardValue} ({italianCard2.GetCardValueName()}) of {italianCard2.CardSuit}\n");
+
+            myFuncs.PauseProgram();
 
             /*******************************************************************************
              * SwissPlayingCard Usage Examples

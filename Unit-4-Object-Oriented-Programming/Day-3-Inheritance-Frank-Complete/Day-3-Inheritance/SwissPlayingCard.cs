@@ -3,7 +3,7 @@ using System;
 
 namespace Day_3_Inheritance
 {
-    //               subclass      is-a superclass
+    //               subclass   is-a superclass
     public class SwissPlayingCard : PlayingCard
     {
         // This will be a subclass of a PlayingCard

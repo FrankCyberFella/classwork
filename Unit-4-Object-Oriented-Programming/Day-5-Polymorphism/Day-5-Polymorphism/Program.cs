@@ -38,7 +38,6 @@ namespace Day_5_Polymorphism
 
             PlayingCard anotherCard = new PlayingCard(13, "Hearts", "Red");
 
-
             Console.WriteLine($"      aCard is: {aCard}");
             Console.WriteLine($"    newCard is: {newCard}");
             Console.WriteLine($"anotherCard is: {anotherCard}");
@@ -77,6 +76,7 @@ namespace Day_5_Polymorphism
 
             italianCard1.ShowCard();
             italianCard2.ShowCard();
+            italianCard3.ShowCard();
 
             myFuncs.WriteSeparatorLine("Compare the ItalianPlayingCard objects to see if equal");
 
@@ -125,14 +125,15 @@ namespace Day_5_Polymorphism
 
             /*******************************************************************************
              * Using Polymorphism to create a Collection of different types of PlayingCards
-             *
              * and have them processed by the method defined in subclass when referenced
              ******************************************************************************/
 
             myFuncs.WriteSeparatorLine("Create a collection of various PlayingCard types and process them");
 
+            // Create a collection of base class objects
             List<PlayingCard> someCards = new List<PlayingCard>();
 
+            // Assigning sub-class objects into the base-class collection
             someCards.Add(blackJackCard1);
             someCards.Add(usaCard2);
             someCards.Add(swissCard3);
@@ -142,21 +143,27 @@ namespace Day_5_Polymorphism
             someCards.Add(usaCard1);
             someCards.Add(swissCard2);
 
+            // When looping through the collection
+            // Use a base-class object to run the methods
             foreach (PlayingCard aPlayingCard in someCards)
             {
-                aPlayingCard.ShowCard();
-            }
+                aPlayingCard.ShowCard(); // The class of object in aPlayingCard determines
+            }                            //    which.ShowCard() method is run
 
             myFuncs.WriteSeparatorLine("Thanks for trying out The Polymorphism Example!");
             myFuncs.PauseProgram();
 
         }  // End of Main()
 
+        // This method receives a base-class object
+        //             and uses the base-class object to run the polymorphic methods
+        // So whatever subclass object is passed to this method
+        //             methods of the subclass will run rather than methods of teh base class
         static void DisplayIfCardsAreEqual(PlayingCard card1, PlayingCard card2)
         {
             myFuncs.WriteSeparatorLine("------ DisplayIfCardsAreEqual(PlayingCard card1, PlayingCard card2) method");
             Console.WriteLine($"Comparing a {card1.GetType()} to a {card2.GetType()}");
-            Console.Write($"A {card1.CardColor} {card2.CardValue} of {card1.CardSuit} ");
+            Console.Write($"A {card1.CardColor} {card1.CardValue} of {card1.CardSuit} ");
             Console.Write($"{(card1.Equals(card2) ? "is EQUAL" : "is NOT equal")} to ");
             Console.WriteLine($"a {card2.CardColor} {card2.CardValue} of {card2.CardSuit} \n");
         }

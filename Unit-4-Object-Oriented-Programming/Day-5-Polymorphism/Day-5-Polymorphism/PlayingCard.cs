@@ -154,9 +154,10 @@ namespace Day_5_Polymorphism
             return CardValue * 17 + CardColor.GetHashCode() + CardSuit.GetHashCode();
         }
 
+        // virtual indicates a Polymorphic method that may be overriden by a subclass
         public virtual void ShowCard()
         {
-            Console.WriteLine(this);
-        }
+            Console.WriteLine(this);   // "this" represents the object being used to run the method
+        }                              // we are using the ToString() method of the class implicitly
     }  // End of PlayingCard class
 } // End of namespace

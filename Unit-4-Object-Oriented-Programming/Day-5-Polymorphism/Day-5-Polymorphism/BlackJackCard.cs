@@ -19,12 +19,12 @@ namespace Day_5_Polymorphism
     /**********************************************************************
      * Constructors - Initialize objects instantiated for the class
      *
-     * Since this sub--class has no additional data to add to the base-class
+     * Since this sub-class has no additional data to add to the base-class
      *
      * All it needs to do is receives the values required to initialize the
      *     base-class object and nothing more
      **********************************************************************/
-
+    // The AmericanPlayingCard ctor needs the value and suit
     public BlackJackCard(int value, string suit) : base(value, suit) { }
 
     /****************************************************************************************
@@ -42,6 +42,8 @@ namespace Day_5_Polymorphism
         // Override the default Equals() method: public bool Equals(object obj)
         // 
         // Equals() returns true to data members of two objects are equal
+        //
+        // A BlackJackCard only compares values to determine equality
         //---------------------------------------------------------------------
         public override bool Equals(Object anObject)
     {
@@ -56,11 +58,13 @@ namespace Day_5_Polymorphism
         }
 
         // Create a sub-class object from the generic object passed to the method
+        //          so we can access the data and methods of the subclass
         BlackJackCard secondCard = anObject as BlackJackCard;  // Note alternate casting syntax
+                                                               // instead of (BlackJackCard) anObject
 
         if(CardValue == secondCard.CardValue)      // If card value matches
         {
-            return true;                           //    they ar equal
+            return true;                           //    they are equal
         }
         return false;                              // if they are not equal return false
 
@@ -71,7 +75,7 @@ namespace Day_5_Polymorphism
         // Display an object of the class
         public override void ShowCard()
          {
-          Console.WriteLine($"AmericanPlayingCard: Value: {GetCardValueName()} ({base.CardValue}), Suit: {base.CardSuit}, Color: {base.CardColor}");
+          Console.WriteLine($"BlackJackCard: Value: {GetCardValueName()} ({base.CardValue}), Suit: {base.CardSuit}, Color: {base.CardColor}");
          }
 
         //---------------------------------------------------------------------

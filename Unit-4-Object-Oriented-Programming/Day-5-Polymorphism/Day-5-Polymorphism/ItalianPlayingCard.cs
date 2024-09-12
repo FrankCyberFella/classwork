@@ -116,8 +116,10 @@ namespace Day_5_Polymorphism
                 return cardValueName[base.CardValue];
             }
 
-            // Display an object of the class
-            public override void ShowCard()
+        // Display an object of the class
+        // override keyword indicates this is replacing the method of the same name in the base class
+        // we are overriding the base class method because we want different processing/behavior
+        public override void ShowCard()
             {
                 Console.WriteLine($"ItalianPlayingCard: Value: {GetCardValueName()} ({base.CardValue}), Suit: {base.CardSuit}, Color: {base.CardColor}");
             }

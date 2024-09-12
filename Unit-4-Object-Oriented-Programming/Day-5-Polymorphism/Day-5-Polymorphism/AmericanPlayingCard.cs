@@ -45,7 +45,7 @@ namespace Day_5_Polymorphism
         //       We initialise the super class to default color since it's based on the suit
         //       We will change it once the processing in the constructor starts
         public AmericanPlayingCard(int theValue, string theSuit)
-            : base(theValue, theSuit, DEFAULT_COLOR) // Pass all data to base class cto
+            : base(theValue, theSuit, DEFAULT_COLOR) // Pass all data to base class ctor
         {                                            // Actual card color will be set after suit is validated
             InitializeSuitColors();
 
@@ -121,6 +121,8 @@ namespace Day_5_Polymorphism
         }
 
         // Display an object of the class
+        // override keyword indicates this is replacing the method of the same name in the base class
+        // we are overriding the base class method because we want different processing/behavior
         public override void ShowCard()
         {
             Console.WriteLine($"AmericanPlayingCard: Value: {GetCardValueName()} ({base.CardValue}), Suit: {base.CardSuit}, Color: {base.CardColor}");

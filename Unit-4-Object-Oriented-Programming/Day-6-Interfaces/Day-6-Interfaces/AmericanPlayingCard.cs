@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Policy;
 
 namespace Day_6_Interfaces
 {
@@ -21,11 +19,14 @@ namespace Day_6_Interfaces
         /*************************************************************************************
          * Additional data required by the subclass
          ************************************************************************************/
-        public  const int DEFAULT_CARD_VALUE = 0;
-        private const string DEFAULT_COLOR = "Black";
-        public  const string DEFAULT_SUIT = "Joker";
-        public  const int    MAX_CARD_VALUE = 13; // King
-        public  const int    MIN_CARD_VALUE = 0; // Joker
+        // Some of these constants have public access rather than private access
+        // This allows them to be referenced with the ClassName. or the Object. notation
+        // It's OK as far as Encapsulation is concerned because they cannot be changes (constants)
+        public  const int    DEFAULT_CARD_VALUE = 0;
+        private const string DEFAULT_COLOR      = "Black";
+        public  const string DEFAULT_SUIT       = "Joker";
+        public  const int    MAX_CARD_VALUE     = 13; // King
+        public  const int    MIN_CARD_VALUE     = 0;  // Joker
 
         private static Dictionary<string, string> suitsColors = new Dictionary<string, string>()
         {
@@ -125,10 +126,10 @@ namespace Day_6_Interfaces
         /****************************************************************************************
          * User Methods for class - Allow user to use and manipulate the class
          ***************************************************************************************/
-
+        // Making the method static allows access using the className. or object. notation
         public static string[] GetSuits()
         {
-            return suitsColors.Keys.ToArray();
+            return suitsColors.Keys.ToArray();  // Convert the suits in the List to an array and return
         }
 
         public string GetCardValueName()

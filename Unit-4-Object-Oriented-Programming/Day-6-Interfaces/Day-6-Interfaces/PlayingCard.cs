@@ -1,7 +1,4 @@
 ﻿
-using System;
-using System.Collections.Generic;
-
 namespace Day_6_Interfaces
 {
     // This is class to represent a simple PlayingCard

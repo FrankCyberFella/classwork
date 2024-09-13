@@ -13,8 +13,8 @@ namespace Day_6_Interfaces
          * Data Members
          *****************************************************************************************/
 
-        private List<AmericanPlayingCard> theDeck;
-
+        // Define a reference to a data member object
+        private List<AmericanPlayingCard> theDeck;   // Define reference and instantiate and assign later
 
         /******************************************************************************************
          * Method Members
@@ -24,10 +24,12 @@ namespace Day_6_Interfaces
         // Constructors
         //----------------------------------------------------------------------------------------
 
-        public CardDeck(bool jokerOption = false)
+        // default parameter for jokerOption - if parameter is not specified it will be set to false
+        public CardDeck(bool jokerOption = false)  
         {
+            // Instantiate data member objects and assign them to their associated reference in ctor
             theDeck = new List<AmericanPlayingCard>();
-            InitializeCardDeck(jokerOption);
+            InitializeCardDeck(jokerOption);  // Send the option to include jokers to the method
         }
 
         //----------------------------------------------------------------------------------------
@@ -36,10 +38,18 @@ namespace Day_6_Interfaces
 
         private void InitializeCardDeck(bool jokerOption)
         {
-            AmericanPlayingCard aCard = new AmericanPlayingCard();
+            // At this point in the process - we have no AmericanPlayingCard objects to use for
+            //    access to any data or methods we might need in the AmericanPlayingCard class
+            // Set up cards with values from 1 to maximum value
+            // Since we have no AmericanPlayingCard objects yet, we can use the class name to access the public constants
+       
+            //                            Class-Name.dataMemberName instead of objectName.dataMemberName
             for (int i = 1; i <= AmericanPlayingCard.MAX_CARD_VALUE; i++)
             {
-                foreach (string aSuit in AmericanPlayingCard.GetSuits())
+                // Set up a card for each suit (except Joker) with the current value
+                // Get an array of the suit values from the class
+                //                                 ClassName.method() instead of objectName.method()
+                foreach (string aSuit in AmericanPlayingCard.GetSuits())  // GetSuits() is defined as static
                 {
                     if (aSuit == "Joker")
                     {
@@ -48,7 +58,7 @@ namespace Day_6_Interfaces
                    theDeck.Add(new AmericanPlayingCard(i, aSuit));
                 }
             }
-            if (jokerOption)
+            if (jokerOption)  // If they want Jokers add two Jokers to the bottom of the deck
             {
                 theDeck.Add(new AmericanPlayingCard(AmericanPlayingCard.DEFAULT_CARD_VALUE, AmericanPlayingCard.DEFAULT_SUIT));
                 theDeck.Add(new AmericanPlayingCard(AmericanPlayingCard.DEFAULT_CARD_VALUE, AmericanPlayingCard.DEFAULT_SUIT));
@@ -68,17 +78,17 @@ namespace Day_6_Interfaces
 
         public AmericanPlayingCard DealACard()
         {
-            if (theDeck.Count == 0)
+            if (theDeck.Count == 0)  // If deck is empty...
             {
-                return null;
+                return null;         //     return null
             }
 
-            AmericanPlayingCard cardDealt = theDeck[0];
-            theDeck.RemoveAt(0);
-            return cardDealt;
+            AmericanPlayingCard cardDealt = theDeck[0]; // get the top card and hold it
+            theDeck.RemoveAt(0);                        // remove the top card from the deck
+            return cardDealt;                           // return the top card we wre holding
         }
 
-        public int Count()
+        public int Count()  // Return the number of cards remaining in the deck
         {
             return theDeck.Count;
         }

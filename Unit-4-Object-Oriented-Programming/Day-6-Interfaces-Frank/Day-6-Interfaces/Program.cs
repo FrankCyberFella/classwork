@@ -26,8 +26,8 @@ namespace Day_6_Interfaces
             //
             // Activate (de-comment) only one of the following instantiation to demostrate
 
-            PokerHand          theCardHand = new PokerHand();
-            //ThreeCardPokerHand theCardHand = new ThreeCardPokerHand();
+            //PokerHand          theCardHand = new PokerHand();
+            ThreeCardPokerHand theCardHand = new ThreeCardPokerHand();
             //BlackJackHand      theCardHand = new BlackJackHand();
             //HeartsCardHand     theCardHand = new HeartsCardHand();
             //RummyHand theCardHand = new RummyHand();

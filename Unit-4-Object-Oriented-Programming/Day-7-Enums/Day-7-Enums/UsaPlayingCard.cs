@@ -15,19 +15,29 @@ namespace Day_7_Enums
     {
         // We get access to all the data and methods in the base class PlayingCard
 
-        /*************************************************************************************
+        /***********************************************************************************************
          * Enumerated Types for class
          *
-         * Assign words to represent value to assist coding and data validation
-         ************************************************************************************/
+         * Assign words to represent values to assist coding and data validation
+         *
+         * Only the words defined for an Enum type are allowed in an Enum variable of that type
+         *
+         * Internally enums are assigned integer values starting at 0
+         *       (you can assign value you want if sequentially from 0 values don't work for the app
+         *
+         * Enums are typically defined as public so applications can use them (OK - they are const)
+         *
+         * Accessing an enum:  className.enumName
+         *                     enumName.enumValue
+         ***********************************************************************************************/
 
         public enum ValidCardSuits
         {
-            Joker,     // 0
-            Clubs,     // 1
-            Diamonds,  // 2
-            Hearts,    // 3
-            Spades     // 4
+            Joker,     // 0 - internally
+            Clubs,     // 1 - internally
+            Diamonds,  // 2 - internally
+            Hearts,    // 3 - internally
+            Spades     // 4 - internally
         };
 
         public enum ValidCardValues
@@ -50,8 +60,8 @@ namespace Day_7_Enums
 
         public enum ValidCardColors
         {
-            Black,
-            Red
+            Black = 6,
+            Red   = 1
         };
         
         /*************************************************************************************
@@ -60,12 +70,15 @@ namespace Day_7_Enums
         // Some of these constants have public access rather than private access
         // This allows them to be referenced with the ClassName. or the Object. notation
         // It's OK as far as Encapsulation is concerned because they cannot be changes (constants)
+        //               dataType    name               = initial-value
+        //               enumName    variableName       =        enumName.enumValue
         public const ValidCardValues DEFAULT_CARD_VALUE = ValidCardValues.Joker;
         public const ValidCardColors DEFAULT_COLOR      = ValidCardColors.Black;
         public const ValidCardSuits  DEFAULT_SUIT       = ValidCardSuits.Joker;
         public const ValidCardValues MAX_CARD_VALUE     = ValidCardValues.King;
         public const ValidCardValues MIN_CARD_VALUE     = ValidCardValues.Joker;
 
+        // Example of initializing Dictionary when defining rather than through a method
         private static Dictionary<ValidCardSuits, ValidCardColors> suitsColors = new Dictionary<ValidCardSuits, ValidCardColors>()
         {
             { ValidCardSuits.Spades  , ValidCardColors.Black},
@@ -79,7 +92,9 @@ namespace Day_7_Enums
 
         // Default Constructor for an UsaPlayingCard
         //     it must call the base() to initialize the base class
-
+        //
+        //       PlayingCard(int value, string, suit, string color)
+        // cast the enum to an int, use the enum.ToString() to get the string assigned to the value
         public UsaPlayingCard() : base((int) DEFAULT_CARD_VALUE, DEFAULT_SUIT.ToString(), DEFAULT_COLOR.ToString()) {}
 
         // 2-arg Constructor for an UsaPlayingCard
@@ -89,6 +104,7 @@ namespace Day_7_Enums
         // Note: The super class (PlayingCard) only has a 3-arg ctor requiring a color
         //       We initialise the super class to default color since it's based on the suit
         //       We will change it once the processing in the constructor starts
+
         public UsaPlayingCard(ValidCardValues theValue, ValidCardSuits theSuit)
             : base((int) theValue, theSuit.ToString(), DEFAULT_COLOR.ToString()) // Pass all data to base class ctor
         {                                                                        // Actual card color will be set after suit is validated
@@ -138,7 +154,7 @@ namespace Day_7_Enums
         // override keyword indicates this is replacing the method of the same name in the base class
         // we are overriding the base class method because we want different processing/behavior
         public override void ShowCard()
-        {
+        {   // Note cast of the int CardValue to the related (ValidCardValues) enum
             Console.WriteLine($"UsaPlayingCard: Value: {(ValidCardValues) base.CardValue} ({base.CardValue})\tSuit: {base.CardSuit}\tColor: {base.CardColor}");
         }
     }

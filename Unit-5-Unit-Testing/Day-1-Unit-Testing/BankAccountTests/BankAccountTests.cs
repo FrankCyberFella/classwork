@@ -4,6 +4,8 @@ namespace BankAccountTests
 {
     using Xunit;
 
+    // xUnit tests for testing BankAccount functionality
+
     /***********************************************************************************************************
      * Common xUnit Assertions
      *
@@ -13,7 +15,7 @@ namespace BankAccountTests
      *    Assert.NotEqual(expected, actual) - True if two objects are equal
      *
      *    Assert.Equal(expected, actual, fudge-factor) - True if two double/float values
-     *                                                   are within "fudge-factor- of each other
+     *                                                   are within "fudge-factor" of each other
      *
      *    Assert.Null(object)    - True if object is null
      *    Assert.NotNull(object) - True if object is not null
@@ -34,29 +36,50 @@ namespace BankAccountTests
      *    Assert.DoesNotContain<(expected, collection) - True if the expected item is not found in the collection
      * 
      **********************************************************************************************************************/
-
+    /*********************************************************************************************
+     * 3 parts to every Unit Test:
+     *
+     *    Arrange - set up test data for the test
+     *
+     *    Act - run method you are testing with the test data
+     *
+     *    Assert - verify the result is what was expected using xUnit Assertations (Assert.xxxx)
+     *
+     * Occasionally the steps might be combined into one - not recommended, but OK if necessary
+     *
+     *
+     * [Fact] - identifies the start of a Unit Test (if missing, xUnit doesn't know it's a test)
+     *
+     * XUnit tests are public return void and receive no parameters
+     *
+     * The name of test should describe in detail what you are testing
+     * (it's the only time being verbose is a good thing)
+     * You never use the test name again - it only appears in results
+     *
+     **********************************************************************************************/
 
     public class BankAccountTests
     {
         /*********************************************************************************************
-         * Test Constructors
+         * Test Constructors - Do they initialize objects as expected
          *********************************************************************************************/
       
-        [Fact]
+        [Fact]  // This is an xUnit test
         public void BankAccount_Is_Created_With_Correct_Information_When_Given_Valid_Balance()
         {
         // Arrange - Define data required for test
            string testAcctOwner = "TestAccount1";
            double testValidStartingBalance = 100;
 
-        // Act - Execute process you are testing
+        // Act - Execute process you are testing - run the constructor with the test data
            BankAccount testAccount = new BankAccount(testAcctOwner, testValidStartingBalance);
 
-       // Assert - Verify result of process execution
-       
+       // Assert - Verify result of process execution - be sure the correct data is in the object
+       //          an assertion must be true to pass
+
             Assert.Equal(testAccount.Balance, testValidStartingBalance);
             Assert.Equal(testAccount.AccountOwner, testAcctOwner);
-            Assert.NotNull(testAccount.AccountNumber);
+            Assert.NotNull(testAccount.AccountNumber);  // Does it have an AccountNumber?
         }
 
         [Fact]
@@ -66,11 +89,14 @@ namespace BankAccountTests
 
            string acctOwner = "TestAccount1";
            double invalidStartingBalance = -100;
-           double expectedResult = 0;
+           double expectedResult = 0;  // Typically expected is variable
+                                       //  rather than a constant coded in the assert
 
-         BankAccount testAccount = new BankAccount(acctOwner, invalidStartingBalance);
+        // Act - Execute process you are testing - run the constructor with the test data
+           BankAccount testAccount = new BankAccount(acctOwner, invalidStartingBalance);
 
          // Assert - Verify result if process execution
+         // Note: "fudge-factor" to indicate they are equal up to decimal places
             Assert.Equal(testAccount.Balance, expectedResult, .001);
         }
 
@@ -97,12 +123,16 @@ namespace BankAccountTests
         [Fact]
         public void Withdraw_Method_Withdraws_Proper_Amount()
         {
+            // Arrange 
             string testAcctOwner = "TestAccount1";
-            double testValidStartingBalance = 100;
-
+            double testValidStartingBalance = 10000;
             BankAccount testAccount = new BankAccount(testAcctOwner, testValidStartingBalance);
 
-            Assert.Equal(testAccount.Balance, testValidStartingBalance);
+            // Act - run the method you are testing with the test data
+            testAccount.Withdraw(6000); // expecting 4000
+
+            // Assert
+            Assert.Equal(4000, testAccount.Balance);
         }
 
     }  // End of BankAccountTests Class

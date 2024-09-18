@@ -9,6 +9,8 @@ namespace Day_7_Enums
 
         static void Main(string[] args)
         {
+            // Note use of enums when creating a new new UsaPlaying
+            //                                             className.enumName.enumValue
             UsaPlayingCard card1 = new UsaPlayingCard(UsaPlayingCard.ValidCardValues.King
                                       ,UsaPlayingCard.ValidCardSuits.Spades);
             card1.ShowCard();

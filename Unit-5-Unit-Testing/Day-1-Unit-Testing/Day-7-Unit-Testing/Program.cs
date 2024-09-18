@@ -9,8 +9,8 @@ namespace Day_7_Unit_Testing
 
         static void Main(string[] args)
         {
-            CheckingAccount frankAccount = new CheckingAccount("Frank", -100);
-            CheckingAccount jennaAccount = new CheckingAccount("Jenna", 900);
+            CheckingAccount frankAccount = new CheckingAccount("Frank", -100);  // Starting Balance 0
+            CheckingAccount jennaAccount = new CheckingAccount("Jenna", 900);   // Starting Balance s/b 900
 
             frankAccount.DisplayAccount();
             jennaAccount.DisplayAccount();

@@ -27,7 +27,7 @@ namespace Day_7_Unit_Testing
         private const double OverDrawnFee    = 10;
         private const double MaxOverdrawnAmt = -100;
 
-
+        // sub-class ctor  must call the base-class ctor with the data for base class
         public CheckingAccount(string acctOwner, double startBalance)
                              : base(acctOwner, startBalance){}
 

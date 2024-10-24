@@ -37,8 +37,11 @@ const reviews = [
  * once you have the element you can add the product name to the span.
  */
 function setPageTitle() {
-  const pageTitle = document.getElementById('page-title'); // Get a pointer to 'page-title' element
-  pageTitle.querySelector('.name').innerHTML = productName;       // change the item with class=name to have what's in name
+  // .getElementId() - return a reference to the element with that id in the DOM
+  const pageTitle = document.getElementById('page-title');  // Get a pointer to 'page-title' element
+  // Change the HTML text for element will class="name" in the pageTitle
+  // .querySelelctor - return a reference to the first thingit finds that matches the CSS selector given
+  pageTitle.querySelector('.name').innerHTML = productName; // change the item with class=name to have what's in name
 //  Alternative Technique
 //  const titleWord = pageTitle.querySelector('.name');
 //  titleWord.innerHTML = name;
@@ -48,6 +51,7 @@ function setPageTitle() {
  * Add our product description to the page.
  */
 function setPageDescription() {
+  // Find me the reference to the element with class="description"
   document.querySelector('.description').innerText = description; // Get to the tag with the class 'description'
                                                                   // assign the value in variable description
 }
@@ -60,6 +64,9 @@ function setPageDescription() {
 function displayReviews() {
   const main = document.getElementById('main');  // Get to the div that will hold the reviews
 
+  // forEach in JavaScript will loop through an array one element at a time
+  // giving the current element the name specified (aReview in this example)
+  // Notice use of an anonymous function  arrow functions
   reviews.forEach((aReview) => {
     const container = document.createElement('div');  // Create a div hold the review
     container.setAttribute('class','review');         // add class='review' to the div
@@ -81,7 +88,7 @@ function displayReviews() {
  */
 function addReviewer(parent, name) {
 const reviewer = document.createElement('h4');  // Create an h4 element
-reviewer.innerText = productName;               // assign the productproductName to the h4 tag
+reviewer.innerText = name;                      // assign the name to the h4 tag
 parent.appendChild(reviewer);                   // add the reviewer as a child to the parent
 }
 
@@ -93,7 +100,7 @@ parent.appendChild(reviewer);                   // add the reviewer as a child t
 function addRating(parent, numberOfStars) {
   const rating = document.createElement('div');  // Create a div to hold rating
   rating.setAttribute('class','rating');         // class=rating to the div
-  for(let i=0; i < numberOfStars; i++) {
+  for(let i=0; i < numberOfStars; i++) {           // Add one star based on the rating number
     const star = document.createElement('img');    // create an img tag for the star
     star.setAttribute('class','ratingStar');       // add a class=rating star to img tag
     star.src='img/star.png';                       // add a src=image-file-productName to img tag
@@ -123,6 +130,9 @@ function addReview(parent, review) {
   feedback.innerText = review;
   parent.appendChild(feedback);
 }
+
+// This is where the functions we wrote get called to manipulate the DOM
+// Remember functions don't execute unless they are called
 
 // set the product reviews page title
 setPageTitle();

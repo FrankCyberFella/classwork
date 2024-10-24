@@ -16,18 +16,25 @@
 
         <h2 id="page-title">Online Reviews for <span class="name"></span></h2>
         <p class="description"></p>
-        <input id="inputDesc" class="d-none form-control form-control-lg" type="text"/>
+        <!-- class-"d-none" is a boot strap class that hides the element           -->
+        <!-- form-control and form-control-lg are also bootstrap classes           --> 
+        <input id="inputDesc" class="d-none form-control form-control-lg" type="text" />
         <div class="clearfix"></div>
 
+        <!-- Add Review is defined here  -->
         <div class="float-right">
             <button id="btnToggleForm" type="button" class="btn btn-outline-success btn-sm"">Add Review</button>
         </div>
 
         <div class="clearfix"></div>
         
+        <!-- form for getting review information from teh user                     -->
+        <!-- Notice it is hidden to start with (class="d-none")                    -->
+         <!--   it will be displayed when the user clicks the "Add Review" button --> 
         <form class="d-none">
             <div class="form-group">
                 <label for="name">Name</label>
+                <!-- placeholder="" text to display when the input text bos is first displayed -->
                 <input type="text" class="form-control" id="name" placeholder="Enter name">
             </div>
             <div class="form-group">
@@ -36,6 +43,7 @@
                 </div>
             <div class="form-group">
                 <label for="rating">Rating</label>
+                <!-- select tag creates a dropdown list of options specified -->
                 <select class="form-control" id="rating">
                     <option>1</option>
                     <option>2</option>
@@ -55,6 +63,8 @@
             <hr>
         </form>
 
+        <!-- an HTML template is used to provide a model of a div to be added to the DOM -->
+        <!-- This template is what an review should look like in the DOM when added      -->
         <template id="review-template">
             <div class="review">
                 <h4></h4>

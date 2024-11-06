@@ -1,5 +1,6 @@
 import { Component }    from '@angular/core';
 import { CommonModule } from '@angular/common'
+import {StudentListServiceService }from '../student-list-service.service'
 
 @Component({
   selector: 'app-student-list',
@@ -14,5 +15,6 @@ export class StudentListComponent {
 // Define a list of students to be displayed
 // For today, it will be coded as an array of literals
 // Soon, we will be getting the data from an external source like an API server
-studentNames = ["Joshua", "Ashley", "Ryan", "Kendall", "Ethan", "Evan"] 
+//studentNames = ["Joshua", "Ashley", "Ryan", "Kendall", "Ethan", "Evan"] 
+studentNames = StudentListServiceService.getStudent() // get the data from the service
 }

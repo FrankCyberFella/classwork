@@ -33,7 +33,4 @@ font-style: italic;
 .admin {
  color: purple;
  width: 3em;
- border-style:groove;
- border-color: aqua;
- border-width: 10px;
 }

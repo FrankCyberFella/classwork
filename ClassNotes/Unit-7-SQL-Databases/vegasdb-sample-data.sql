@@ -4,7 +4,7 @@
 -- Frank's SQL training session
 --
 -- ---------------------------------------------------------------------------
--- THIS SQL ASSUMES A DATABASE CALLED 'vegadb' alread exist
+-- THIS SQL ASSUMES A DATABASE CALLED 'vegasdb' already exist
 -- ---------------------------------------------------------------------------
 
 --
@@ -57,7 +57,7 @@ create table gambler
 -- Create host table representing gamblers hosted at a specific casino
 --
 -- Note: parent dependent relationships defined in foreign clauses
---       and cascase option on delete which will delete dependent rows in
+--       and cascade option on delete which will delete dependent rows in
 --       this table if the matching parent row is deleted from the parent
 --
 -- This table must be created after all parent tables

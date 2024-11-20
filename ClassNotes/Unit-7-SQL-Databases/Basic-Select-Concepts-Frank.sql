@@ -71,18 +71,41 @@ select birth_date, gambler_name   -- columns in the result
  -- where birth_date between '01/01/1970' and '12/31/1979';  -- rows where gambler was born in the 70's
  where birth_date between '1970-01-01' and '12/31/1979';  -- rows where gambler was born in the 70's
  
- -- Display how old each person is
- --
- -- DATEDIFF() will calclate the duration between dates
- -- Syntax: DATEDIFF(result-interval, first-date, second-date)
- --
- --  result-interval is what unit of measure you want for the result:
- --                      year, yyyy, yy = Year
- --                      month, mm, m = month
- --                      dayofyear = Day of the year
- --  
- select gambler_name, birth_date, 
-        DATEDIFF(year, birth_date, GetDate())      as Years_Old,
-        DATEDIFF(month, birth_date, GetDate())     as Months_Old,
-        DATEDIFF(dayOfYear, birth_date, GetDate()) as Days_Old
-   from gambler                                 
+
+-- Display how old each person is and demonstrate date formattin
+--
+-- DATEDIFF() will calclate the duration between dates
+--
+-- Syntax: DATEDIFF(result-interval, first-date, second-date)
+--
+--  result-interval is what unit of measure you want for the result:
+--                      year      = Year(s)
+--                      month     = Month(s)
+--                      dayofyear = Day(s)
+--  
+-- format() allows you to format the date for display
+--
+-- Syntax:  FORMAT(date,'format-string')
+--
+--  Use the following codes in the format string for the date parts desired:
+--
+--              dd   - day of month from 01-31
+--              dddd - day spelled out
+--              MM   - month number from 01-12
+--              MMM  - month name abbreviated
+--              MMMM - month spelled out
+--              yy   - year with two digits
+--              yyyy - year with four digits
+--
+-- the AS phrase will assign or change the names of the columns in the result
+--    (columns derived from functions or calculations do not have names)
+--  
+select gambler_name, birth_date, 
+       format(birth_date, 'MM/dd/yy')    as USA_Format_2_Digit_Year,
+  	   format(birth_date, 'MM/dd/yyyy')  as USA_Format_4_Digit_Year,
+	   format(birth_date, 'MMM dd yyyy') as Month_Abbrev,
+	   format(birth_date, 'dddd MMMM dd, yyyy')   as Human_Format,
+       DATEDIFF(year, birth_date, GetDate())      as Years_Old,
+       DATEDIFF(month, birth_date, GetDate())     as Months_Old,
+       DATEDIFF(dayOfYear, birth_date, GetDate()) as Days_Old
+  from gambler                                 

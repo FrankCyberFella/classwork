@@ -70,7 +70,7 @@ select birth_date, gambler_name   -- columns in the result
  where birth_date between '1970-01-01' and '12/31/1979';  -- rows where gambler was born in the 70's
  
 
--- Display how old each person is and demonstrate date formattin
+-- Display how old each person is and demonstrate date formatting
 --
 -- DATEDIFF() will calclate the duration between dates
 --

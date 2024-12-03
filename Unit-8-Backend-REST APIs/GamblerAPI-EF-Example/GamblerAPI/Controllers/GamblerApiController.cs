@@ -18,8 +18,11 @@ namespace GamblerAPI.Controllers
         }
 
         // Method to handle HTTP GET for URL path: "/api/Gamblers"  - root path ("api") defined above
+        // async on the method inidcates this method does async calls
+        // it returns a Task object containing a List of Gambler class objects
+        // HTTP server processing converts ths List of Gamblers to JSON and returns it to the client
         [HttpGet("Gamblers")]
-        public async Task<List<Gambler>> GetAllGamblers() // Calls to Entity Framework are asynchrous - hencae async attribute 
+        public async Task<List<Gambler>> GetAllGamblers() // Calls to Entity Framework are asynchrous - hence async attribute 
         {
             return await _context.Gamblers.ToListAsync(); // Call entity Framework to return all data instance in data source as a List
         }
@@ -30,19 +33,29 @@ namespace GamblerAPI.Controllers
         public async Task<Model.Gambler?> GamblerDetailsAsync(int? id)
         {
             // Call Entity Framework to retrieve Gambler with id passed in URL
+            // Retrieve by primary key
             var aGambler = await _context.Gamblers
-                .FirstOrDefaultAsync(m => m.Id == id);
+                                         .FirstOrDefaultAsync(m => m.Id == id);
 
             return aGambler;  // Return Gambler retrieved from data source
         }
 
         // Method to handle HTTP POST for URL path: "/api/Gamblers/create" - root path "api" defined above
         //     Data to be added to the data source will be passed in the body of the HTTP POST request as JSON
+        // [Bind(list-of-class-variables)]  Tells Entity Framework which class valiables to use
+        //                                  when creating the object being passed as a parameter
+        //                                  from the JSON sent to the server
+        
         [HttpPost("Gamblers/create")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Gambler>> Create(
-            [Bind("Id,Name,Address,BirthDate,Salary")] Model.Gambler aGambler)  // Instantiate a Gambler object using JSON in request
+            [Bind("Id,Name,Address,BirthDate,Salary")] Gambler aGambler)  // Instantiate a Gambler object using JSON in request
         {
+            // You should never add bad/invalid data to a database
+            // It can be very difficult to remove
+            //
+            // Always validate any data you receive from an external source (like JSON from a client)
+
             if (ModelState.IsValid)                   // If data passed passes all validity checks...
             {
                 _context.Add(aGambler);               //      Call Entity Framework to add data to data source
@@ -90,12 +103,12 @@ namespace GamblerAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<int>> DeleteConfirmedAsync(int id)
         {
-            var Gambler = await _context.Gamblers.FindAsync(id);  // Call Entity Framework to see if tsk to be delete exists in the data source
+            var Gambler = await _context.Gamblers.FindAsync(id); // Call Entity Framework to see if tsk to be delete exists in the data source
 
-            if (Gambler != null)                               // If Gambler does exist...
+            if (Gambler != null)                                 // If Gambler does exist...
             {
-                _context.Gamblers.Remove(Gambler);             //     Call Entity Framework to mark it as removed it from the data soure
-                _context.SaveChanges();                        //     Save/Commit the delete in tehdata source
+                _context.Gamblers.Remove(Gambler);               //     Call Entity Framework to mark it as removed it from the data soure
+                _context.SaveChanges();                          //     Save/Commit the delete in tehdata source
 
             }
             return Ok();

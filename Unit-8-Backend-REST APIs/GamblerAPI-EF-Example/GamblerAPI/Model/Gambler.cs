@@ -12,8 +12,11 @@ namespace GamblerAPI.Model
          ***********************************************************************/
 
         // Data members with Entity Framework notations
-        // Use of [JsonProperty] is required when the class data member name
+        // Use of [JsonPropertyName] is required when the class data member name
         //       does not match the associated table column names
+        //
+        // Use of [DatabaseGenerated(DatabaseGeneratedOption.Identity)] tell Entity Framework
+        //        the Data Base manager will generate this, so don't expect it when we add a new entry
 
         [JsonPropertyName("id")]                 // Relate JSON property to object property since names differ
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]  // This is a Generated value - Identity column
@@ -22,6 +25,7 @@ namespace GamblerAPI.Model
         [JsonPropertyName("gambler_name")]       // Relate JSON property to object property since names differ
         public string   Name      { get; set; }
 
+        // ? next to variable data type indicates it could be null to C#
         [JsonPropertyName("address")]             // Relate JSON property to object property since names differ
         public string?  Address   { get; set; }
 

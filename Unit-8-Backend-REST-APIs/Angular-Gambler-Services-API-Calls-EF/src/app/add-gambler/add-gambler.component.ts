@@ -22,11 +22,11 @@ constructor(private gamblerService  : GamblerService,
 // Data from the web page will be used to fill in the values a new movie (two-way bind)
 //     variable : data-type - using the interface as a data-type
 public newGambler : GamblerInfo =  {
-                                 id        : 0,
-                                 name      : "please enter name",
-                                 address   : "please enter address",
-                                 birthDate : "date of birth",
-                                 salary    : 0
+                                 id             : 0,
+                                 gambler_name   : "please enter name",
+                                 address        : "please enter address",
+                                 birth_date     : "yyyy-mm-dd",
+                                 monthly_salary : 0
                                 };
 
 // This method method called when the submit is clicked in the html form
@@ -34,6 +34,7 @@ public newGambler : GamblerInfo =  {
 // the it tells the router to go the /movies page
 //funcname(parameter : data-type) - using interface as a data-type
   async addGambler(newGambler : GamblerInfo) {
+    console.log(newGambler)
     // call the service to add the newMovie to the data source
     await this.gamblerService.addGambler(newGambler)
 

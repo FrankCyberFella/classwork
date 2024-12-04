@@ -1,6 +1,7 @@
 ﻿using GamblerAPI.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace GamblerAPI.Controllers
 {
@@ -51,6 +52,7 @@ namespace GamblerAPI.Controllers
         public async Task<ActionResult<Gambler>> Create(
             [Bind("Id,Name,Address,BirthDate,Salary")] Gambler aGambler)  // Instantiate a Gambler object using JSON in request
         {
+            Debug.WriteLine("Trying to create ganbler: " + aGambler);
             // You should never add bad/invalid data to a database
             // It can be very difficult to remove
             //

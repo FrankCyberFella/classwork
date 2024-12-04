@@ -70,7 +70,12 @@ namespace GamblerAPI.Model
 
         public override string? ToString()
         {
-            return base.ToString();
+            return "------ Gambler Model Object ------ ]"
+                  + "\n         Id: " + Id
+                  + " \n      Name: " + Name
+                  + " \n   Address: " + Address
+                  + " \n    Salary: " + Salary
+                  + " \nBirth Date: " + BirthDate;
         }
     } // End of class
 } // End of namespace

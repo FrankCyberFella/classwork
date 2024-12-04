@@ -24,9 +24,9 @@
 // This interface describes a MoviesInfo object
 // we export it so others can use it
 export interface GamblerInfo {
-    id        : number;
-    name      : string;
-    address   : string;
-    salary    : number;
-    birthDate : string;
+    id             : number;
+    gambler_name   : string;
+    address        : string;
+    monthly_salary : number;
+    birth_date     : string;
 }

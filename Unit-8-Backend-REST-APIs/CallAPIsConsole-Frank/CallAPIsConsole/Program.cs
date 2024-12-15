@@ -22,7 +22,7 @@ namespace CallAPIsConsole
             // We just add the path to the Base URI when we make out API class
             theClient.BaseAddress = new Uri("https://localhost:7223/api/MovieApi/");
 
-            // Hold all Movies from teh datasource for processing
+            // Hold all Movies from the datasource for processing
             List<Movie> allTheMovies = null;  
 
             /********************************************************************************************
@@ -106,7 +106,7 @@ namespace CallAPIsConsole
 
             // Do an HTTP Put to update a movie
 
-            // Retrieve Movie from data source to be updated 
+            // Retrieve Movie from our data source to be updated 
             Movie movieToUpdate = allTheMovies[0]; 
 
             Console.WriteLine("Updating: " + movieToUpdate.Title);
@@ -137,7 +137,7 @@ namespace CallAPIsConsole
             // Do an HTTP Put to update a movie
 
             // Set MovieId to be deleted 
-            int movieIdToDelete = 5; ;
+            int movieIdToDelete = 5; 
 
             Console.WriteLine("Deleting movieId: " + movieIdToDelete);
 

@@ -9,7 +9,9 @@ import com.frank.reservations.exception.HotelNotFoundException;
 import com.frank.reservations.exception.ReservationNotFoundException;
 import com.frank.reservations.models.Hotel;
 import com.frank.reservations.models.Reservation;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MemoryReservationDAO implements ReservationDAO {
 
     private static List<Reservation> reservations = new ArrayList<>();

@@ -1,10 +1,10 @@
 package com.frank.reservations.dao;
 
-import com.frank.reservations.models.Address;
-import com.frank.reservations.models.Hotel;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.frank.reservations.models.Address;
+import com.frank.reservations.models.Hotel;
 
 public class MemoryHotelDAO implements HotelDAO {
 

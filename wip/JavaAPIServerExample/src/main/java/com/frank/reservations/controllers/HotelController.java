@@ -1,5 +1,19 @@
 package com.frank.reservations.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.frank.reservations.dao.HotelDAO;
 import com.frank.reservations.dao.MemoryHotelDAO;
 import com.frank.reservations.dao.MemoryReservationDAO;
@@ -8,22 +22,19 @@ import com.frank.reservations.exception.HotelNotFoundException;
 import com.frank.reservations.exception.ReservationNotFoundException;
 import com.frank.reservations.models.Hotel;
 import com.frank.reservations.models.Reservation;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+import com.frank.reservations.utilities.LogAPIRequest;
 
 @RestController
 public class HotelController {
 
-    private HotelDAO hotelDAO;
-    private ReservationDAO reservationDAO;
+    private final HotelDAO       hotelDAO;
+    private final ReservationDAO reservationDAO;
+    //private final LogAPIRequest  logRequest;
 
     public HotelController() {
         this.hotelDAO = new MemoryHotelDAO();
         this.reservationDAO = new MemoryReservationDAO(hotelDAO);
+        //this.logRequest = new LogAPIRequest();
     }
 
     /**
@@ -33,6 +44,7 @@ public class HotelController {
      */
     @RequestMapping(path = "/hotels", method = RequestMethod.GET)
     public List<Hotel> list() {
+        LogAPIRequest.logAPICall("GET  - /hotels");
         return hotelDAO.list();
     }
 
@@ -44,6 +56,7 @@ public class HotelController {
      */
     @RequestMapping(path = "/hotels/{id}", method = RequestMethod.GET)
     public Hotel get(@PathVariable int id) {
+        LogAPIRequest.logAPICall("GET  - /hotels/" + id);
         return hotelDAO.get(id);
     }
 
@@ -54,6 +67,7 @@ public class HotelController {
      */
     @RequestMapping(path = "/reservations", method = RequestMethod.GET)
     public List<Reservation> listReservations() {
+        LogAPIRequest.logAPICall("GET  - /reservations");
         return reservationDAO.findAll();
     }
 
@@ -65,6 +79,7 @@ public class HotelController {
      */
     @RequestMapping(path = "reservations/{id}", method = RequestMethod.GET)
     public Reservation getReservation(@PathVariable int id) throws ReservationNotFoundException {
+        LogAPIRequest.logAPICall("GET  - /reservatins/"+ id);
         return reservationDAO.get(id);
     }
 
@@ -76,6 +91,7 @@ public class HotelController {
      */
     @RequestMapping(path = "/hotels/{id}/reservations", method = RequestMethod.GET)
     public List<Reservation> listReservationsByHotel(@PathVariable("id") int hotelID) throws HotelNotFoundException {
+        LogAPIRequest.logAPICall("GET  - /hotels/" + hotelID + "/reservations");
         return reservationDAO.findByHotel(hotelID);
     }
 
@@ -91,6 +107,7 @@ public class HotelController {
     @RequestMapping(path = "/hotels/{id}/reservations", method = RequestMethod.POST)
     public Reservation addReservation(@Valid @RequestBody Reservation reservation, @PathVariable("id") int hotelID)
             throws HotelNotFoundException {
+        LogAPIRequest.logAPICall("POST - /hotels/" + hotelID + "/reservations");        
         return reservationDAO.create(reservation, hotelID);
     }
 
@@ -103,6 +120,7 @@ public class HotelController {
      */
     @RequestMapping(path = "/hotels/filter", method = RequestMethod.GET)
     public List<Hotel> filterByStateAndCity(@RequestParam String state, @RequestParam(required = false) String city) {
+        LogAPIRequest.logAPICall("GET  - /hotels/filter?city=" + city + "?state=" + state);
 
         List<Hotel> filteredHotels = new ArrayList<>();
         List<Hotel> hotels = list();

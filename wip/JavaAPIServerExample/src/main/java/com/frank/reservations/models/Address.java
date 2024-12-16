@@ -1,6 +1,5 @@
 package com.frank.reservations.models;
 
-import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class Address {

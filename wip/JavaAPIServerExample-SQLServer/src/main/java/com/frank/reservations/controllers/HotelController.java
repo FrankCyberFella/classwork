@@ -1,16 +1,16 @@
 package com.frank.reservations.controllers;
 
-import com.frank.reservations.dao.HotelDAO;
-import com.frank.reservations.dao.MemoryHotelDAO;
-import com.frank.reservations.dao.MemoryReservationDAO;
-import com.frank.reservations.dao.ReservationDAO;
+import com.frank.reservations.dao.*;
 import com.frank.reservations.exception.HotelNotFoundException;
 import com.frank.reservations.exception.ReservationNotFoundException;
 import com.frank.reservations.models.Hotel;
 import com.frank.reservations.models.Reservation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import java.sql.Connection;
+import javax.sql.DataSource;
 
+import javax.sql.DataSource;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,12 @@ import java.util.List;
 @RestController
 public class HotelController {
 
-    private HotelDAO hotelDAO;
+    private HotelDAO       hotelDAO;
     private ReservationDAO reservationDAO;
 
-    public HotelController() {
-        this.hotelDAO = new MemoryHotelDAO();
-        this.reservationDAO = new MemoryReservationDAO(hotelDAO);
+    public HotelController(DataSource hotelDao) {
+        this.hotelDAO = new SqlServerHotelDAO((DataSource) hotelDAO);
+   //     this.reservationDAO = new MemoryReservationDAO(reservationDAO);
     }
 
     /**
@@ -93,37 +93,4 @@ public class HotelController {
             throws HotelNotFoundException {
         return reservationDAO.create(reservation, hotelID);
     }
-
-    /**
-     * /hotels/filter?state=oh&city=cleveland
-     *
-     * @param state the state to filter by
-     * @param city  the city to filter by
-     * @return a list of hotels that match the city & state
-     */
-    @RequestMapping(path = "/hotels/filter", method = RequestMethod.GET)
-    public List<Hotel> filterByStateAndCity(@RequestParam String state, @RequestParam(required = false) String city) {
-
-        List<Hotel> filteredHotels = new ArrayList<>();
-        List<Hotel> hotels = list();
-
-        // return hotels that match state
-        for (Hotel hotel : hotels) {
-
-            // if city was passed we don't care about the state filter
-            if (city != null) {
-                if (hotel.getAddress().getCity().toLowerCase().equals(city.toLowerCase())) {
-                    filteredHotels.add(hotel);
-                }
-            } else {
-                if (hotel.getAddress().getState().toLowerCase().equals(state.toLowerCase())) {
-                    filteredHotels.add(hotel);
-                }
-
-            }
-        }
-
-        return filteredHotels;
-    }
-
 }

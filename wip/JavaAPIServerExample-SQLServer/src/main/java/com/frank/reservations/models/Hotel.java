@@ -2,18 +2,18 @@ package com.frank.reservations.models;
 
 public class Hotel {
 
-    private int id;
-    private String name;
-    private Address address;
-    private int stars;
-    private int roomsAvailable;
-    private double costPerNight;
-    private String coverImage;
+    private int     id;
+    private String  name;
+    private String  address;
+    private int     stars;
+    private int     roomsAvailable;
+    private double  costPerNight;
+    private String  coverImage;
 
     public Hotel() {
     }
 
-    public Hotel(int id, String name, Address address, int stars, int roomsAvailable, double costPerNight) {
+    public Hotel(int id, String name, String address, int stars, int roomsAvailable, double costPerNight) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -40,28 +40,40 @@ public class Hotel {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getStars() {
         return stars;
     }
 
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
+
     public int getRoomsAvailable() {
         return roomsAvailable;
     }
 
-    public String getCoverImage() {
-        return coverImage;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setRoomsAvailable(int roomsAvailable) {
+        this.roomsAvailable = roomsAvailable;
     }
 
     public double getCostPerNight() {
@@ -70,5 +82,13 @@ public class Hotel {
 
     public void setCostPerNight(double costPerNight) {
         this.costPerNight = costPerNight;
+    }
+
+    public String getCoverImage() {
+        return coverImage;
+    }
+
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
     }
 }

@@ -12,7 +12,10 @@ import com.frank.reservations.models.Reservation;
 
 public class MemoryReservationDAO implements ReservationDAO {
 
+    // Data source is a List in memory
     private static List<Reservation> reservations = new ArrayList<>();
+    // Because this will referenc ethe HotelDAO 
+    // We define an object tp represent the HotolDAO
     private HotelDAO hotelDAO;
 
     public MemoryReservationDAO(HotelDAO hotelDAO) {

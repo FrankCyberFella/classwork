@@ -6,11 +6,13 @@ import javax.validation.constraints.NotNull;
 
 public class Reservation {
 
-                         // We want the server to be sure id is NotBlank
-    @Min (value=0)       // and 0 or greater
-	private int id;
-   
-    @Min (value=1)       // Hotel ID must greater than 0
+    // Validation Annotations are being used to validate the data sent
+    //    to the server
+                         
+    @Min (value=0)       // We want the server to be sure id is 0 or greater
+    private int id;
+
+    @Min (value=1)       // Hotel ID must greater than or equal to 1
     private int hotelID;
   
     @NotNull

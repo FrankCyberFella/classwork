@@ -1,9 +1,9 @@
 package com.frank.hotels.services;
 
+import java.util.Scanner;
+
 import com.frank.hotels.models.Hotel;
 import com.frank.hotels.models.Reservation;
-
-import java.util.Scanner;
 
 public class ConsoleService {
 
@@ -16,7 +16,7 @@ public class ConsoleService {
   public int printMainMenu() {
     int menuSelection;
     System.out.println("");
-    System.out.println("Welcome to Tech Elevator Hotels. Please make a selection: ");
+    System.out.println("Welcome to Grand Circus Hotels. Please make a selection: ");
     System.out.println("1: List Hotels");
     System.out.println("2: List Reservations for Hotel");
     System.out.println("3: Create new Reservation for Hotel");

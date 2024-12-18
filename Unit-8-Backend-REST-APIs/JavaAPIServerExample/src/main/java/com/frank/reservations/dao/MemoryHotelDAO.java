@@ -6,6 +6,13 @@ import java.util.List;
 import com.frank.reservations.models.Address;
 import com.frank.reservations.models.Hotel;
 
+/***********************************************************************************
+ * a DAO (Data Access Object) is used to manipulate data in a data source
+ * 
+ * Usually the name of the DAO give you idea of the data source
+ * 
+ * Contains the methods for accessing a data source
+ ***********************************************************************************/
 public class MemoryHotelDAO implements HotelDAO {
 
     /**
@@ -14,6 +21,8 @@ public class MemoryHotelDAO implements HotelDAO {
      * This is where we would normally reach for dependency injection but because we
      * haven't learned about it yet we are using this workaround.
      */
+    // The data source ia a List in memory
+    // static creates one instance of teh data shared by all who use the DAO
     public static List<Hotel> hotels = new ArrayList<>();
 
     public MemoryHotelDAO() {
@@ -22,7 +31,8 @@ public class MemoryHotelDAO implements HotelDAO {
         }
     }
 
-    @Override
+    // Return a Hotel for the id or null if not in the data source
+    @Override  // Ask the compiler to verify this is a correct override for the interface
     public Hotel get(int id) {
         for (Hotel hotel : hotels) {
             if (hotel.getId() == id) {
@@ -32,17 +42,19 @@ public class MemoryHotelDAO implements HotelDAO {
         return null;
     }
 
+    // Return all the objects in the data source
     @Override
     public List<Hotel> list() {
         return hotels;
     }
 
+    // Add an object to the data source
     @Override
     public void create(Hotel hotel) {
         hotels.add(hotel);
     }
 
-
+    // INitialize our data source
     private void setHotels() {
         hotels.add(new Hotel(1,
                 "Aloft Cleveland",

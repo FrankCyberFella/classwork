@@ -4,7 +4,7 @@ public class Hotel {
 
     private int id;
     private String name;
-    private Address address;
+    private Address address;  // This a an Object
     private int stars;
     private int roomsAvailable;
     private double costPerNight;

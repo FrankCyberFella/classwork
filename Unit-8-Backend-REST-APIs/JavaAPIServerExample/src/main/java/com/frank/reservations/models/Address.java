@@ -28,6 +28,7 @@ public class Address {
         return id;
     }
 
+    // Generate a unique id for each object instantiate
     private void setId() {
         this.id = UUID.randomUUID().toString();
     }

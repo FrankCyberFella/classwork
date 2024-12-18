@@ -7,13 +7,17 @@ import com.frank.hotels.services.HotelService;
 
 public class App {
 
+    // Define a constant to hold the BaseURL for the PAI we want used
     private static final String API_BASE_URL = "http://localhost:8080/";
 
     public static void main(String[] args) {
         int menuSelection = 999;
         int hotelId = -1;
 
+        // ConsoleService will handle all user interactions with keyboard and screen
+        // HotelService will handle all interactions with the Hotel data source
         ConsoleService consoleService = new ConsoleService();
+        // Pass the Base URL for the API server to HotelService
         HotelService hotelService = new HotelService(API_BASE_URL);
 
         while (menuSelection != 0) {

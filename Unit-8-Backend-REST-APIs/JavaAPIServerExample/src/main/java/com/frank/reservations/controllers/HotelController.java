@@ -24,28 +24,36 @@ import com.frank.reservations.models.Hotel;
 import com.frank.reservations.models.Reservation;
 import com.frank.reservations.utilities.LogAPIRequest;
 
-@RestController
+/************************************************************************************
+ * This contains the controllers for processing HTTP requests to Hotel Application
+ ***********************************************************************************/
+
+@RestController  // This tells the serve the class contains REST Http Request controller
 public class HotelController {
 
-    private final HotelDAO       hotelDAO;
-    private final ReservationDAO reservationDAO;
-    //private final LogAPIRequest  logRequest;
+    private final HotelDAO       hotelDAO;       // An object to access the HotelDAO (code interface name)
+    private final ReservationDAO reservationDAO; // An object to access the ReservationDAO (code interface name)
 
+    // Constructor for the class will instantiate and assign the objects to their reference
     public HotelController() {
-        this.hotelDAO = new MemoryHotelDAO();
+        this.hotelDAO       = new MemoryHotelDAO();
         this.reservationDAO = new MemoryReservationDAO(hotelDAO);
-        //this.logRequest = new LogAPIRequest();
     }
 
     /**
      * Return All Hotels
      *
      * @return a list of all hotels in the system
+     * 
+     * @RequestMapping identify which URL path and HTTP request the method will handle
      */
-    @RequestMapping(path = "/hotels", method = RequestMethod.GET)
+    
+    @RequestMapping(path="/hotels", method = RequestMethod.GET)
     public List<Hotel> list() {
-        LogAPIRequest.logAPICall("GET  - /hotels");
-        return hotelDAO.list();
+        // Uses a "utility class" to write out a message to teh server log
+        //  classname.method(parameter)
+        LogAPIRequest.logAPICall("GET  - /hotels"); //Optional log the request received by the server
+        return hotelDAO.list(); // call teh DAO to get all the Hotels and return them
     }
 
     /**
@@ -88,6 +96,18 @@ public class HotelController {
      *
      * @param hotelID
      * @return all reservations for a given hotel
+     * 
+     * This method will handle a PathVariable passed within the URL
+     * 
+     * {variable-name} in the URL to indicate a variable will be passed in the path
+     * 
+     * The method receives the Path variable using the @PathVariable annotation in the parameter list
+     * 
+     * @PathVariable("name-from-path-@RequestMapping") datatype name-for-use-in-the-method
+     * 
+     * @PathVariable("id") int hotelID - get the path variable "id" and assign it to the method variable hotelId
+     * 
+     * Giving the path variable a new name for the method is optional
      */
     @RequestMapping(path = "/hotels/{id}/reservations", method = RequestMethod.GET)
     public List<Reservation> listReservationsByHotel(@PathVariable("id") int hotelID) throws HotelNotFoundException {
@@ -100,9 +120,18 @@ public class HotelController {
      *
      * @param reservation
      * @param hotelID
+     * 
+     * Http POST sends the JSON data in the body of the request
+     * 
+     * @RequestBody is used in the method parameter list to tell server to create an object from the JSON it received
+     * 
+     * @RequestBody Reservation reservation - tells the server to create a Reservation object from the JSON in teh request
+     * 
+     * @Valid tells the server to apply any validation annotations in the Model POJO to teh JSON it received
      */
     // The @Valid annotation in the parameter set for the a method
     //     Tells server to valid the incoming data according to validation criteria in the class
+    // If JSON fails any of the validation tests, a BadRequest HTTPStatus is returned
     @ResponseStatus(HttpStatus.CREATED)  // Set the HTTP Status for successful execution of this controller method
     @RequestMapping(path = "/hotels/{id}/reservations", method = RequestMethod.POST)
     public Reservation addReservation(@Valid @RequestBody Reservation reservation, @PathVariable("id") int hotelID)
@@ -117,13 +146,25 @@ public class HotelController {
      * @param state the state to filter by
      * @param city  the city to filter by
      * @return a list of hotels that match the city & state
+     * 
+     * This method will handle path with query parameters
+     * 
+     * a query parameter is at end of a path following '?'  parameterName=value
+     * multiples query parameters separated by '&''
+     * 
+     * path for the method: /hotels/filter?state=state-value&city=Cleveland
+     * 
+     * you can make a query parameter optional by adding required -false to the @RequestParam
+     * 
+     * in this example: state is a required query parameter
+     *                   city is optional
      */
     @RequestMapping(path = "/hotels/filter", method = RequestMethod.GET)
     public List<Hotel> filterByStateAndCity(@RequestParam String state, @RequestParam(required = false) String city) {
         LogAPIRequest.logAPICall("GET  - /hotels/filter?city=" + city + "?state=" + state);
 
-        List<Hotel> filteredHotels = new ArrayList<>();
-        List<Hotel> hotels = list();
+        List<Hotel> filteredHotels = new ArrayList<>();  // Hold teh hotels we want
+        List<Hotel> hotels = list();  // call the method in this class that gets all Hotels
 
         // return hotels that match state
         for (Hotel hotel : hotels) {
@@ -140,8 +181,13 @@ public class HotelController {
 
             }
         }
-
         return filteredHotels;
+    }
+
+    // Method to delete a reservation
+    @RequestMapping(path="/reservations/@D" , method=RequestMethod.DELETE)
+    public void deleteReservation(@PathVariable int id) throws ReservationNotFoundException {
+        reservationDAO.delete(id);
     }
 
 }

@@ -10,6 +10,9 @@
         <th>Released</th>
         <th>Director</th>
     </tr>
+    <!-- {{variable-defined-in-the-ts-file}}-->
+    <!--  moviesList is an array in the ts-file       -->
+    <!--  aMovie is one movie in the moviesList array -->  
     <tr *ngFor="let aMovie of moviesList">
         <td>{{aMovie.title}}</td>
         <td id="relyear">{{aMovie.releaseYear}}</td>

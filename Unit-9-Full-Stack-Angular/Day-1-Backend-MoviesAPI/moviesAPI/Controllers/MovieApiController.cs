@@ -42,6 +42,7 @@ namespace moviesAPI.Controllers
         //                                  from the JSON sent to the server
         public async Task<Movie> blockBuster([Bind("MovieId, Title, ReleaseDate, Director")] Movie newMovie)
         {
+            Console.WriteLine("Adding Movie: " + newMovie);
             // context.operation(data)
             _context.Add(newMovie);               // Data is added to a memory of the table
             await _context.SaveChangesAsync();    // Call Entity Framework to save new data in memory to data source
@@ -56,7 +57,7 @@ namespace moviesAPI.Controllers
         {
             var aMovie = await _context.Movies.FindAsync(id); // Call Entity Framework to see if movie to be delete exists in the data source
 
-            if (aMovie != null)  // If tehre is a Movie in the data source
+            if (aMovie != null)  // If there is a Movie in the data source
             {
                 _context.Movies.Remove(aMovie);                   // Call Entity Framework to mark it as removed it from the data soure
                 _context.SaveChanges();                           // Save/Commit the delete in tehdata source
@@ -68,6 +69,7 @@ namespace moviesAPI.Controllers
         [HttpPut("movies/update")]
         public async Task<ActionResult<int>> changeMovieInfo([Bind("MovieId, Title, ReleaseDate, Director")] Movie updatedMovie)
         {
+            Console.WriteLine("Updating Movie: " + updatedMovie);
             try                                     // Attempt to...
             {
                 _context.Update(updatedMovie);      //     Call Entity Framework to update data in data source

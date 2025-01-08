@@ -52,6 +52,7 @@ constructor(private movieService  : MoviesService ) {}
 //    so it is available for the HTML page
 async ngOnInit() {
   // We have wait for the asynchronous process of retrieving the data before we gone
+  // getMoviesList() in the movieServies async calls an external API
   const theData  = await this.movieService.getMoviesList(); // Initialize our moviesList from service
   // once the data comes back from the service, we can assign it to our array
   this.moviesList = theData

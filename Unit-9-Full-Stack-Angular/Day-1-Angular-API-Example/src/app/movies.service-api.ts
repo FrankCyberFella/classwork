@@ -21,7 +21,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-
+// export allows processes outside this file (like Angular) to access stuff in it
 export class MoviesService {
 
   // A module contains data and methods/functions for processing that data
@@ -29,12 +29,15 @@ export class MoviesService {
   // Source of data for calls to retrieve the data - initialized in the code
   private listOfMovies : any[] = []  // An array of objects from the API
 
-  // This is a variable to hold the external API URL - used in the calls to the API
+  // This is a variable to hold the base external API URL - used in the calls to the API
   private movieInfoApi : string = "https://65f1fd0b034bdbecc7642d17.mockapi.io/api/v1/movies"
 
   // constructor is run after Angular initialization 
   // it should initialize data for the service
   // This one will get the initial copy of the data from the external API
+  // An HttpClient object is automatically creates and passed to the constructor
+  // The constructor automatically creates a reference and assign the object passed to it
+  // In this example, the reference to the external server is called http
   constructor(private http:HttpClient) {} 
     
     // Call the function getMoviesList() asynchronously to get the data
@@ -47,7 +50,9 @@ export class MoviesService {
       // this.movieInfoAPI - the variable with the URL for the API  
       // .Promise() - Use a Promise for when the async class is done
       //
-      //theMovies will hole the data from the API call    
+      //theMovies will hold the data from the API call    
+      // This is doing an HTTP GET to the URL in movieInfoAPI variable
+      // .get<data-type-of-data-returned> - any is sued so any type of dat will be accepted
       const theMovies: any[] = await this.http.get<any>(this.movieInfoApi).toPromise()
       
       this.listOfMovies = theMovies  // Assign the data from the API call to our array
@@ -57,7 +62,7 @@ export class MoviesService {
 
   // This method will receive a MoviesInfo object and add it to our data source (listOfMovies)
   // an HTTP POST is used to add data to an an API
-  // The HTTP POST needs to tell the server what kind of dat is being for addition to data source
+  // The HTTP POST needs to tell the server what kind of data is being for addition to data source
   // HTTP Headers provide info about the request to the server such as:
   //     1. Security tokens to identify who you are
   //     2. The type of data being sent with the request
@@ -77,7 +82,7 @@ export class MoviesService {
                                         'Content-Type' : 'application/json'
                                        });
                                        
-       // use http.post(API-URL, data-to-send, {header-object}).toPromise()                                
-       return this.http.post(this.movieInfoApi, newMovie, {headers}).toPromise();
+       //      use http.post(API-URL          , data-to-send, {header-object}).toPromise()                                
+       return this.http.post(this.movieInfoApi, newMovie    , {headers})      .toPromise();
              }
   } 

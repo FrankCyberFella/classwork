@@ -6,6 +6,8 @@ namespace PracticeAssessment_8_Backend.Models
     {
         static private List<ClubMember> clubMembers = new List<ClubMember>();
 
+        static private int nextId = 6;
+
         public ClubMemberDAO()
         {
             clubMembers.Add(new ClubMember(1, "Frank", 10, false));
@@ -39,7 +41,9 @@ namespace PracticeAssessment_8_Backend.Models
 
         public ClubMember addAClubMember(ClubMember aClubMember)
         {
+            aClubMember.Id = nextId;
             clubMembers.Add(aClubMember);
+            nextId++;
             return aClubMember;
         }
 

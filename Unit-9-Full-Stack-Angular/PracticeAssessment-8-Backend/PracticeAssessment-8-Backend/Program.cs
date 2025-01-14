@@ -14,23 +14,37 @@ namespace PracticeAssessment_8_Backend
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            builder.Services.AddCors(options =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                options.AddDefaultPolicy(policy =>
+                {
+
+                    policy.WithOrigins("https://localhost:7223").AllowAnyMethod()
+                                                                .AllowAnyHeader()
+                                                                .AllowAnyOrigin();
+                });
+            });
+            
+                var app = builder.Build();
+
+                // Configure the HTTP request pipeline.
+                if (app.Environment.IsDevelopment())
+                {
+                    app.UseSwagger();
+                    app.UseSwaggerUI();
+                }
+
+                app.UseHttpsRedirection();
+
+                app.UseAuthorization();
+
+                app.UseCors();
+
+                app.MapControllers();
+
+                app.Run();
+
+
             }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.Run();
-        }
     }
-}
+    } 

@@ -84,11 +84,17 @@ public class Student
         studentName = name;   // Set the class data to the data passed in from the user
         testScores  = scores; // Set the class data to the data passed in from the user
     }
+
+    /********************************************************************************************
+     * Getters and Setters
+     *******************************************************************************************/
+
     
+
     /********************************************************************************************
      * Methods to manipulate the class
      *******************************************************************************************/
-    
+
     // We need a method to allow the user to add scores to our testScores List
     // Every method requires a method signature and a body
     // Method signature:   access  return

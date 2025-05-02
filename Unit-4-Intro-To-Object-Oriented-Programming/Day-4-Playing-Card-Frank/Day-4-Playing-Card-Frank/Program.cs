@@ -8,7 +8,7 @@ namespace Day_2_Playing_Card_Example
     {
         // Instantiate a copy of the code in CommonlyUsedFunctions
         //         called myFuncs
-        // It's static because its used in Main() whichis static
+        // It's static because its used in Main() which is static
         static CommonlyUsedFunctions myFuncs = new CommonlyUsedFunctions();
 
         // This is the application program 0 Main()
@@ -42,10 +42,11 @@ namespace Day_2_Playing_Card_Example
              * Define/Instantiate a new PlayingCard to be the same as aCard
              *     and display them both
              *************************************************************************/
-
-         // PlayingCard newCard = aCard;  // This makes both newCard and aCard point to the same object
-            PlayingCard newCard = new PlayingCard(aCard); // Use copy constructor
-
+         // Create a copy of aCard
+         // PlayingCard newCard = aCard;  // copy the reference - This makes both newCard and aCard point to the same object
+         // PlayingCard newCard = new PlayingCard(aCard.CardValue, aCard.CardSuit, aCard.CardColor); 
+            PlayingCard newCard = new PlayingCard(aCard); // Use copy constructor copy the data
+         
             Console.WriteLine($"  aCard is: {aCard}");
             Console.WriteLine($"newCard is: {newCard}");
 
@@ -53,12 +54,12 @@ namespace Day_2_Playing_Card_Example
              * Change the value in newCard to be a two
              *************************************************************************/
             myFuncs.WriteSeparatorLine("Change value in newCard to 2");
-        //  newCard.cardValue = 2;   // Cannot access private data in an object
+          //newCard.cardValue = 2;   // Cannot access private data in an object
             newCard.CardValue = 2;   // Use property to change the value
+    
             Console.WriteLine($"newCard is: {newCard}");
             Console.WriteLine($"  aCard is: {aCard}");
-
-
+            
             myFuncs.PauseProgram();
         }
     }

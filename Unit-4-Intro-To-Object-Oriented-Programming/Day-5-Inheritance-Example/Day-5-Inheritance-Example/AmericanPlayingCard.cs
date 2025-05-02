@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Day_3_Inheritance
+namespace Day_5_Inheritance_Example
 {
     // This will be a subclass of a PlayingCard
     // and will add what an AmericanPlaying needs that differs from a PlayingCard:
@@ -42,7 +42,7 @@ namespace Day_3_Inheritance
         //        with any values it gets when instantiated
         //
         // Note: The super class (PlayingCard) only has a 3-arg ctor requiring a color
-        //       We initialise the super class to default color since it's based on the suit
+        //       We initialize the super class to default color since it's based on the suit
         //       We will change it once the processing in the constructor starts
         public AmericanPlayingCard(int theValue, string theSuit)
             : base(theValue, theSuit, DEFAULT_COLOR) // Pass all data to base class cto

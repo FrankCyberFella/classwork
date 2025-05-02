@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Day_3_Inheritance
+namespace Day_5_Inheritance_Example
 {
     // This is class to represent a simple PlayingCard
     // It's in the same namespace as the application (for now and for simplicity)

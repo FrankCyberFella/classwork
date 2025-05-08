@@ -14,30 +14,45 @@ namespace Day_5_Inheritance_Example
     public class AmericanPlayingCard : PlayingCard  // Indicate PlayingCard is our base class
     {
         // We get access to all the data and methods in the base class PlayingCard
+        // (So we don't need to define them again)
 
         /*************************************************************************************
          * Additional data required by the subclass
          ************************************************************************************/
+        // Constants are used to facilitate coding and understanding
+        // (C# coding convention: CONSTANT_NAMES - All uppercase; words separated by underscores)
+        // const indicates this data item is a constant - cannot be changed once assigend a value
         private const int    DEFAULT_CARD_VALUE = 0;
         private const string DEFAULT_COLOR      = "Black";
         private const string DEFAULT_SUIT       = "Joker";
         private const int    MAX_CARD_VALUE     = 13;   // King
         private const int    MIN_CARD_VALUE     = 0;    // Joker
 
+        // Dictionary will associate suits and colors
         private Dictionary<string, string> suitsColors = new Dictionary<string, string>();
 
+        // So we can use names for the card values - indexes are the card values
+        // (defined for ease of use)
         private string[] cardValueName =//   0       1       2       3       4        5       6       7
                                         { "Joker", "Ace" , "Two", "Three", "Four" , "Five", "Six", "Seven",
                                           "Eight", "Nine", "Ten", "Jack" , "Queen", "King"
                                         //   8        9      10     11        12      13
                                         };
 
-        // Default Constructor for an AmericanPlayingCard
+        // A Subclass constructor MUST call its Super Calsls constructor
+        // to ensure teh super class data is initialied.
+        // 
+        // base() represents a base class ctor
+        // 
+        
+        // Default Constructor for an AmericanPlayingCard - initialize default card
         //     it must call the base() to initialize the base class
+        // The super class has only a 3-arg ctor so we have call it to initialize teh super class data
 
+        //     this-class-ctor       : super-class ctor
         public AmericanPlayingCard() : base(DEFAULT_CARD_VALUE, DEFAULT_SUIT, DEFAULT_COLOR) {}
 
-        // 2-arg Constructor for an AmericanPlayingCard
+        // 2-arg Constructor for an AmericanPlayingCard - allow a value and suit (we decide color)
         //       it must call the base() method to initialize the base class
         //        with any values it gets when instantiated
         //
@@ -45,9 +60,9 @@ namespace Day_5_Inheritance_Example
         //       We initialize the super class to default color since it's based on the suit
         //       We will change it once the processing in the constructor starts
         public AmericanPlayingCard(int theValue, string theSuit)
-            : base(theValue, theSuit, DEFAULT_COLOR) // Pass all data to base class cto
+            : base(theValue, theSuit, DEFAULT_COLOR) // Pass all data to base class ctor
         {                                            // Actual card color will be set after suit is validated
-            InitializeSuitColors();
+            InitializeSuitColors();  // Call a method to setup our card suit/color dictionary
 
             // In the following code we are using the properties in the base class to set values
             // The base class owns it's data, so it's property know how to set its data
@@ -109,7 +124,7 @@ namespace Day_5_Inheritance_Example
          * Overrides - Replace unwanted behavior of base class with behaviors for the subclass
          ***************************************************************************************/
 
-        // No Overrides requires as base class processing does what we want it to do
+        // No Overrides required as base class processing does what we want it to do
 
         /****************************************************************************************
          * User Methods for class - Allow user to use and manipulate the class

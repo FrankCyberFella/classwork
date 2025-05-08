@@ -32,10 +32,10 @@ namespace Day_5_Inheritance_Example
              *     and display them both
              *************************************************************************/
 
-            // PlayingCard newCard = aCard;  // This makes both newCard and aCard point to the same object
+            //PlayingCard newCard = aCard;  // This makes both newCard and aCard point to the same object
             PlayingCard newCard = new PlayingCard(aCard); // Use copy constructor
 
-            Console.WriteLine($"  aCard is: {aCard}");
+            Console.WriteLine($"  aCard is: {aCard}");  // PlayingCard ToString() is used to generate the object as a string
             Console.WriteLine($"newCard is: {newCard}");
 
             /*************************************************************************
@@ -63,19 +63,29 @@ namespace Day_5_Inheritance_Example
             
             // This will use the PlayingCard ToString() method to convert theCard to a string
             // Since the AmericanPlayingCard does not have a ToString() method override
-            //      when C# needs to ger a string representation of an AmericanPlayingCard
+            //      when C# needs to get a string representation of an AmericanPlayingCard
             //      it will use the ToString() in its base class
             //      (or the generic Object ToString() if base class doesn't have one)
 
             Console.WriteLine($"theCard: {theCard}");
-
+            
+    /**********************************************************************************************************
+     *   Inheritance related code starts here
+     *************************************************************************************************************/
+            
+            myFuncs.WriteSeparatorLine("Inheritance stuff starts here...");
+    
             AmericanPlayingCard theCard2 = new AmericanPlayingCard(10, "Spades");
+            
+            // Display what's in AmericanPlayingCard
+            theCard2.ShowCard();  // Use the AmericanPlayingCard method to display the card
 
             // This will use the PlayingCard .Equals() method
             // Since the AmericanPlayingCard does not have a Equals() method override
             //      when C# needs to use an Equals() method for an AmericanPlayingCard
             //      it will use the Equals() in its base class
             //      (or the generic Object Equals() if base class doesn't have one)
+            // in the Equals() method:  this represents theCard; otherCard represnents theCard2
             if (theCard.Equals(theCard2))
             {
                 Console.WriteLine("They are EQUAL");
@@ -103,17 +113,36 @@ namespace Day_5_Inheritance_Example
 
             myFuncs.WriteSeparatorLine("Display AmericanPlayingCard using base class ToString()");
 
-            Console.WriteLine(usaCard1);
+            Console.WriteLine(usaCard1);  // WriteLine will look for a ToString() method to get a string 
+                                          // representation of the class.
+                                          // usaCard is an AmericanPlayingCard object
+                                          // The AmericanPlayingCard class DOES NOT Have an ToString() method
+                                          // So it looks to the super class of AmericanPlayingCard to see if it has one
+                                          // PlayingCard DOES have a ToString() method, so WriteLine uses it
             Console.WriteLine(usaCard2);
 
             myFuncs.WriteSeparatorLine("Compare two AmericanPlayingCards");
 
             Console.Write($"1st card: {usaCard1.CardValue} ({usaCard1.GetCardValueName()}) of {usaCard1.CardSuit}");
             
-            Console.Write($"{(usaCard1.Equals(usaCard2) ? " is EQUAL" : " is NOT equal")} to");
+            // The super class .Equals() is used because our subclass doesn't have one
+            //                    (condition)           ? value-if-true : value-if-false
+            Console.Write($"{(usaCard1.Equals(usaCard2) ? " is EQUAL"   : " is NOT equal")} to");
 
             Console.Write($" 2nd card: {usaCard2.CardValue} ({usaCard2.GetCardValueName()}) of {usaCard2.CardSuit}\n");
 
+            
+            myFuncs.WriteSeparatorLine("Italian Card Stufff Follows");
+            
+            // Define an 2 of Coins which is Yellow
+            ItalianPlayingCard anItalianCard = new ItalianPlayingCard(2, "Coins", "Yellow");
+            
+            // Define an 10 of Swords which is Red
+            ItalianPlayingCard anItalianCard2 = new ItalianPlayingCard(10, "Swords", "Red");
+            
+            Console.WriteLine($"ItalianCard2: {anItalianCard2}");
+            Console.WriteLine($"ItalianCard:  {anItalianCard}");
+            
             myFuncs.PauseProgram();
             
             myFuncs.WriteSeparatorLine("Thanks for trying out our first OOP application!");

@@ -42,7 +42,7 @@ namespace Day_6_Polymorphism
         //        with any values it gets when instantiated
         //
         // Note: The super class (PlayingCard) only has a 3-arg ctor requiring a color
-        //       We initialise the super class to default color since it's based on the suit
+        //       We initialize the super class to default color since it's based on the suit
         //       We will change it once the processing in the constructor starts
         public AmericanPlayingCard(int theValue, string theSuit)
             : base(theValue, theSuit, DEFAULT_COLOR) // Pass all data to base class cto
@@ -63,6 +63,7 @@ namespace Day_6_Polymorphism
                 base.CardSuit = DEFAULT_SUIT;        //     set the card suit to the default
             }
 
+            // We can't really set the color until we know the suit
             base.CardColor = suitsColors[base.CardSuit]; // Set the card color based on the suit
         }
 
@@ -117,10 +118,12 @@ namespace Day_6_Polymorphism
 
         public string GetCardValueName()
         {
-            return cardValueName[base.CardValue];  // Use the card value as an an index to name array
+            return cardValueName[base.CardValue];  // Use the card value as an index to name array
         }
 
         // Display an object of the class
+        // override indicates we are overriding (changing) the behavior of a method in the superclass
+        //          to implement Polymorphism for this class
         public override void ShowCard()
         {
             Console.WriteLine($"AmericanPlayingCard: Value: {GetCardValueName()} ({base.CardValue}), Suit: {base.CardSuit}, Color: {base.CardColor}");

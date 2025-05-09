@@ -56,7 +56,7 @@ namespace Day_6_Polymorphism
             AmericanPlayingCard usaCard1 = new AmericanPlayingCard(10, "Spades");
             AmericanPlayingCard usaCard2 = new AmericanPlayingCard(10, "Spades");
             AmericanPlayingCard usaCard3 = new AmericanPlayingCard(10, "Clubs");
-
+            
             usaCard1.ShowCard();
             usaCard2.ShowCard();
             usaCard3.ShowCard();
@@ -131,20 +131,22 @@ namespace Day_6_Polymorphism
 
             myFuncs.WriteSeparatorLine("Create a collection of various PlayingCard types and process them");
 
+            // Define a List of super class objects (PlayingCard)
             List<PlayingCard> someCards = new List<PlayingCard>();
 
-            someCards.Add(blackJackCard1);
-            someCards.Add(usaCard2);
-            someCards.Add(swissCard3);
-            someCards.Add(usaCard3);
-            someCards.Add(italianCard1);
-            someCards.Add(blackJackCard3);
-            someCards.Add(usaCard1);
-            someCards.Add(swissCard2);
+            someCards.Add(blackJackCard1);   // Store a subclass object in the super class List
+            someCards.Add(usaCard2);         // Store a subclass object in the super class List
+            someCards.Add(swissCard3);       // Store a subclass object in the super class List
+            someCards.Add(usaCard3);         // Store a subclass object in the super class List
+            someCards.Add(italianCard1);     // Store a subclass object in the super class List
+            someCards.Add(blackJackCard3);   // Store a subclass object in the super class List
+            someCards.Add(usaCard1);         // Store a subclass object in the super class List
+            someCards.Add(swissCard2);       // Store a subclass object in the super class List
 
+            // Loop through the List using a super class object
             foreach (PlayingCard aPlayingCard in someCards)
             {
-                aPlayingCard.ShowCard();
+                aPlayingCard.ShowCard();  // Use a super class object to run Polymorphic methods
             }
 
             myFuncs.WriteSeparatorLine("Thanks for trying out The Polymorphism Example!");
@@ -152,6 +154,12 @@ namespace Day_6_Polymorphism
 
         }  // End of Main()
 
+        
+        // Method is receiving objects of the superclass type
+        // We are sending object of the subclass to the method
+        // We are using Polymorphism in then method: define superclass object and assign a subclass object
+        
+        // With Polymorphism one method can process any subclasses in an inheritance hierarchy
         static void DisplayIfCardsAreEqual(PlayingCard card1, PlayingCard card2)
         {
             myFuncs.WriteSeparatorLine("------ DisplayIfCardsAreEqual(PlayingCard card1, PlayingCard card2) method");

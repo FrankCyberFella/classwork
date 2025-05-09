@@ -33,7 +33,7 @@ namespace Day_6_Polymorphism
                                             //   8           9        10     11         12       13
                                         };
             // Since not all values between 0 and 13 are valid
-            // This List wil be used to determin the invalid values
+            // This List wil be used to determine the invalid values
             private List<int> invalidCardValues = new List<int>() { 8, 9 };
 
             // Default Constructor for an ItalianPlayingCard
@@ -46,7 +46,7 @@ namespace Day_6_Polymorphism
         //       it must call the base() to initialize the base class
         //        with any values it gets when instantiated
         public ItalianPlayingCard(int theValue, string theSuit)
-                : base(theValue, theSuit, DEFAULT_COLOR) // Pass all data to base class cto
+                : base(theValue, theSuit, DEFAULT_COLOR) // Pass all data to base class ctor
             {                                            // Actual card color will be set after suit is validated
                 InitializeSuitColors();
 

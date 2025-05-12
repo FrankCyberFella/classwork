@@ -36,7 +36,7 @@ public class Person
   *****************************************************************************/
  public string Name 
  {
-     get => _name;
+     get => _name;  // shorthand for return _name
      set => _name = value ?? throw new ArgumentNullException(nameof(value));
  }
 

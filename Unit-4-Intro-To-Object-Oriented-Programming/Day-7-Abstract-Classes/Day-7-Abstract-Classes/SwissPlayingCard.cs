@@ -115,7 +115,7 @@ namespace Day_6_Abstract_Classes
         }
 
         // Display an object of the class
-        // override keyword indicates this is replacing the method of the same name in the base class
+        // override keyword indicates this is replacing/providing the method of the same name in the base class
         // we are overriding the base class method because we want different processing/behavior
         public override void ShowCard()
         {

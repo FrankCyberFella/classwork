@@ -3,6 +3,7 @@ using System;
 
 namespace Day_6_Interfaces
 {
+    // To indicate use of interface you code as if it were a subclass
     public class BlackJackHand : ICardHand
     {
         /**********************************************************

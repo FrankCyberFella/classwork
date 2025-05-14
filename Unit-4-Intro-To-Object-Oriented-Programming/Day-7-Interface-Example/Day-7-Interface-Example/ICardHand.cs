@@ -1,6 +1,10 @@
 ﻿namespace Day_6_Interfaces
 {
     // Interface for behaviors/methods a Class wanting to be a CardHand must implement
+    //
+    // Tells anyone using a class that implements the interface
+    //       they can be sure at least these methods with parameters specified
+    //       are available
 
     // Interfaces have:
     //    1. no data

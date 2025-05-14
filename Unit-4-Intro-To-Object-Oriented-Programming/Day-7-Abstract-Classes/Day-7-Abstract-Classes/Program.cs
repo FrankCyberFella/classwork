@@ -10,8 +10,9 @@ class Program
         static void Main(string[] args)
         {
             commonCode.WriteSeparatorLine("Welcome to the Abstract Class Example!");
-
-     //     PlayingCard aCard = new PlayingCard(1, "Hearts", "Red");
+            
+            // If PlayingCard is abstract you cannot instantiate of the class
+            //PlayingCard aCard = new PlayingCard(1, "Hearts", "Red");
             
             AmericanPlayingCard usaCard       = new AmericanPlayingCard(1, "Hearts");
             ItalianPlayingCard  italianCard   = new ItalianPlayingCard(10, "Cups");

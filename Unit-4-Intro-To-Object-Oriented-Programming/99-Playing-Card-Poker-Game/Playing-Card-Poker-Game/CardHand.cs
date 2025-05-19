@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Playing_Card_Poker_Game;
 /***************************************************************************************************
- * Class to Simulate an American Playing Card Hand
+ * Class to Simulate an Generic Card Hand
  *
  * abstract means it's meant be a super class and cannot be instantiated on it's own
  *
@@ -17,7 +17,7 @@ public abstract class CardHand   : IValidCardHand  { // a CardHand is type of IV
 	 * Member Data
 	 ***********************************************************************************************/
 
-	private int numCardsInHand;         // Maximum number of cards in hand
+	private   int  numCardsInHand;      // Maximum number of cards in hand
 	protected List<PlayingCard> aHand;  // Reference to the PlayingCard Hand
 
 	/***********************************************************************************************

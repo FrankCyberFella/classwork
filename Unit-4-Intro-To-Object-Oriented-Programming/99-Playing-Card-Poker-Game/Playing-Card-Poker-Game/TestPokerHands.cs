@@ -4,6 +4,8 @@ public class TestPokerHands
 {
     private PokerHand   aPokerHand = new PokerHand();
     
+    //                                                  enum-for-value         , enum-for-the-suit
+    //                                                      class.enumType.enumValue
     private PlayingCard aceDiamonds = new PlayingCard(PlayingCard.CardValue.Ace, PlayingCard.CardSuit.Diamond);
     private PlayingCard aceHearts   = new PlayingCard(PlayingCard.CardValue.Ace, PlayingCard.CardSuit.Heart);
     private PlayingCard aceSpades   = new PlayingCard(PlayingCard.CardValue.Ace, PlayingCard.CardSuit.Spade);

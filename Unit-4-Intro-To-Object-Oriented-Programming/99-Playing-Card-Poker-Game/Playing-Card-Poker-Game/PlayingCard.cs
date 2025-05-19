@@ -13,15 +13,16 @@ public class PlayingCard
      * 
      * enum - define a set of constant values that may be referenced as a data type
      *        allows the assign of a word to a constant value to limit the values in a variable
-     *        make it easier to code (get rid uysing "maigic" numbers to represent data
+     *        make it easier to code (get rid using "magic" numbers to represent data
      *        used as data-types - define variable as enums, parameters as enum - any where a variable is allowed
-     *        C# will ensure that an enum type only has values valid for teh enum (we don't have to check)
+     *        C# will ensure that an enum type only has values valid for the enum (we don't have to check)
      *        enum are actual integer values starting at 0 inside C#
      ***************************************************************************************************/
     // MaKing the enum public allows application programs to use the enum as constant too
 
     public enum CardColor
     {  // define words to represent allowable card colors (instead of String)
+       // 0  , 1  
         Black, Red                 // These are the only valid values C# will allow
     };
 
@@ -32,6 +33,7 @@ public class PlayingCard
 
     public enum CardValue
     {  // Using the fact that enums are really integers inside value to name our values
+       //  0    1    2     3      4    5     6     7      8      9    10   11    12     13    14
         Joker, One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace
     };
 
@@ -44,11 +46,13 @@ public class PlayingCard
      * protected so subclasses may access is OK since they are constants and cannot be changed
      * 
      * static so it can be referenced using the class name. ie. no object required
+     *
+     * readonly so it can't be changed - const is Ok too 
      ***************************************************************************************************/
-
+//                            datatype  variable-name    = initial-value  ;
     protected static readonly CardValue DEFAULTCARDVALUE = CardValue.Joker;   // enum data-type for value
-    protected static readonly CardColor DEFAULTCOLOR = CardColor.Black;
-    protected static readonly CardSuit  DEFAULTSUIT = CardSuit.Joker;
+    protected static readonly CardColor DEFAULTCOLOR     = CardColor.Black;
+    protected static readonly CardSuit  DEFAULTSUIT      = CardSuit.Joker;
     /***************************************************************************************************
      * Member data
      * 
@@ -58,17 +62,7 @@ public class PlayingCard
     private CardValue _value;   // use enum for data type- C# will enforce allowable values
     private CardColor _color;   // use enum for data type- C# will enforce allowable values
     private CardSuit  _suit;    // use enum for data type- C# will enforce allowable values
-
-    /***************************************************************************************************
-     * Properties
-     **************************************************************************************************
-
-     public CardValue Value {get; set;}
-     public CardValue Color {get; set;}
-     public CardValue Suit  {get; set;}
-
-
-
+    
     /***************************************************************************************************
      * Default constructor
      ***************************************************************************************************/
@@ -208,7 +202,7 @@ public class PlayingCard
                 this._color = CardColor.Red;
                 break;      // break is required so we don't fall through to the next case - we exit the switch
             default:
-                this._color = DEFAULTCOLOR;  // no break is needed here because it is the last case
+                this._color = DEFAULTCOLOR;  // break is needed here even thoough its last case
                 break;
         }
     }
@@ -226,10 +220,10 @@ public class PlayingCard
       // It's just a regular class, not a special data type like string,
       //                      so C# has no built-in support for it
       //
-      //  To concaTenate values: String + String - C# knows that + with a String means concaTenation
+      //  To concatenate values: String + String - C# knows that + with a String means concatenation
       //                         StringBuilder.append(otherString) - methods are required
       //
-      // String are immutable - if you assign a new value to a String C# destroy old String and creates a new Ace
+      // String are immutable - if you assign a new value to a String C# destroy old String and creates a new one
       //-------------------------------------------------------------------------------------------------
         StringBuilder stringCard = new StringBuilder();  // Define an object to hold String version of object
 

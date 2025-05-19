@@ -8,12 +8,13 @@ public class Program
     public static void Main(string[] args)
     {
 	    // Run TestPokerHands Test Class
+	    // Instantiate a TestTestPokerHands Object
 	    TestPokerHands aPokerHandsTest = new TestPokerHands();
 	    //aPokerHandsTest.run();   // Verify hand is ranked correctly ass a Poker hand
 	    
 	    // Run TryAllPokerHand Test Class
 	    TryAllPokerHands aPokerHandsTryAll = new TryAllPokerHands();  // Run multiple hands through verification
-	    //aPokerHandsTryAll.run();
+	    aPokerHandsTryAll.run();
 	    
 	    // Run a Poker Game
 	    PokerGame aGame = new PokerGame();

@@ -10,7 +10,6 @@
 
 public interface IValidCardHand
 {
-
     void ClearHand();                // Remove all cards from a hand
     void Show();                     // Display all cards in a hand
     void DealHand(CardDeck aDeck);   // Fill a hand from a CardDeck object

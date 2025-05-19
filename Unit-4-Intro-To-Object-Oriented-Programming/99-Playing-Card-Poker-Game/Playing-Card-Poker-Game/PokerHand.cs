@@ -52,13 +52,13 @@ public class PokerHand  :   CardHand
 	/***************************************************************************************************
 	 * Constructor
 	 ***************************************************************************************************/
-	public PokerHand() : base()
+	public PokerHand() : base()  // Note required call to base constructor
 	{
 		// Default constructor
 		handRank = PokerHandRanking.NotRanked;
 	}
 
-	public PokerHand(PokerHand otherHand) : base()
+	public PokerHand(PokerHand otherHand) : base() // Note required call to base constructor
 	{
 		// copy constructor
 		handRank = PokerHandRanking.NotRanked;
@@ -115,7 +115,8 @@ public class PokerHand  :   CardHand
 	 ****************************************************************************************************/
 	public PokerHandRanking RankHand()
 	{
-		PokerHand theHand = this;
+		PokerHand theHand = this;  // create a reference to teh hand in the object
+		                           // so we can manipulate it
 		
 		theHand.SortByValue();
 
@@ -212,8 +213,8 @@ public class PokerHand  :   CardHand
 			return true;
 		}
 		// Check for low Ace straight (A-2-3-4-5)
-		if (aHand[0].Value    == PlayingCard.CardValue.Ace
-		    && aHand[1].Value == PlayingCard.CardValue.Five
+		if (aHand[0].Value    == PlayingCard.CardValue.Ace   // 14
+		    && aHand[1].Value == PlayingCard.CardValue.Five  // 5
 		    && aHand[2].Value == PlayingCard.CardValue.Four
 		    && aHand[3].Value == PlayingCard.CardValue.Three
 		    && aHand[4].Value == PlayingCard.CardValue.Two)

@@ -156,9 +156,9 @@ public class PlayingCard
     /***************************************************************************************************
      * Object super class overrides:
      *
-     *      ToString()    - represent class data as a String
-     *      Equals()      - determine if contents of two object of the class are equal
-     *      GetHashCode() - generate hash code based on unchanging data members
+     *      toString()    - represent class data as a String
+     *      equals()      - determine if contents of two object of the class are equal
+     *      hashCode()   b- generate hash code based on unchanging data members
      ***************************************************************************************************/
 
     @Override
@@ -171,6 +171,11 @@ public class PlayingCard
                 '}';
     }
 
+    // Java: @Override asks the compiler to verify the override is correct
+    //       @Override is optional in Java - good idea to code it to be sure your override is correct
+
+    //   C#: override keyword in method signature:  public override string ToString()
+    //       override keyword was required
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof PlayingCard that)) return false;

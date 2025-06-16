@@ -63,6 +63,7 @@ div {  /* style all the divs and everything in them */
 
   table { /* style all tables in the html */
      border: 2px solid black; /* set the border width type color */
+    
   }
 
   th, td { /* style all <th> and <td> tags in the html */

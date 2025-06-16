@@ -4,14 +4,38 @@
 
 // Single line comment
 
+/*****************************************************************************
+ * We test the JavaScript code using Inspect in the browser
+ ****************************************************************************/
+
 /**
  * Functions start with the word function.
  * They don't have a return type and the naming convention is camel-case.
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const aVariable = 42;
+  
+  // console.log() - display data on the console (Console.WriteLine() or System.out.println()) 
+  // JavaScript support interpolation to construct strings similar to C#
+  //
+  // Interpolation:  `words ${variable}`  C#: $(words {aVariable})
+  console.log(`The value in aVariable is: ${aVariable}`)
+
   // Declares a variable those value can be changed
+
+  let itBe = 87.4;
+  console.log(`The value in itBe is: ${itBe}`)
+
+  itBe = 1776;
+  console.log(`The value in itBe is: ${itBe}`)
+
   // Declares a variable that will always be an array
+  let stuff = ["things", 'Kevin', "Hello", 774.6]
+  console.log(`The value in stuff is: ${stuff}`) // Display teh array as a variable - elements separated by ,
+  console.log(stuff)    // display the array name is shows the array and it's elements in a dropdown
+  console.table(stuff)
+
 }
 
 /**

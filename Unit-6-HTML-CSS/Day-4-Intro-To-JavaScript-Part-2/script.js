@@ -207,8 +207,7 @@ function stringFunctions(value) {
   //         substring will return characters up to but not including the character at end-pos
   console.log(`value.substring(5,9) - ${value.substring(5,9)}`);
 
-  /*
-    Other Methods
+   /* Other Methods
         - split(string)
         - substr(number, number)
         - substring(number, number)
@@ -216,4 +215,60 @@ function stringFunctions(value) {
         - trim()
         - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
     */
+}
+
+/*
+ ###################################
+  Array Manipulation Functions
+ ###################################
+*/
+function arrayFunctions() {
+
+
+let stooges = [              // Define a JavaScript array
+              "Moe",
+              "Larry",
+              "Curly"
+              ]
+console.table(stooges) // Display array as formatted display
+
+// JavaScript array is like a List in C# or ArrayList in Java
+
+stooges.push("Shemp")  // Add an element to the end of the array
+console.table(stooges) // Display array as formatted display
+
+stooges.unshift("Curly Joe")  // Add an element to the start of the array
+console.table(stooges)        // Display array as formatted display
+
+// To insert into an array: splice(start-index, 0, "new-elements")
+
+stooges.splice(3,0, "Groucho", "Chico", "Harpo") // insert elements before index 3
+console.table(stooges)        // Display array as formatted display
+
+// To delete elements into an array: splice(start-index, #-elems-to-delete)
+
+stooges.splice(3,1)       // delete the element at index 3
+console.table(stooges)    // Display array as formatted display
+
+stooges.splice(3,2)       // delete 2 elements at index 3
+console.table(stooges)    // Display array as formatted display
+
+// shift() will remove the first element in the array and return it
+// splice(0,1) will remove the first element in the array and NOT return it as an element
+stooges.shift()           // delete first element and return it
+console.table(stooges)    // Display array as formatted display
+
+stooges.pop()           // delete last element and return it
+console.table(stooges)  // Display array as formatted display
+
+let marxBros = [
+               "Groucho",
+               "Chico",
+               "Harpo"
+               ]
+
+// combine arrays using .concat()
+let oldFunnyGuys = stooges.concat(marxBros);
+console.table(oldFunnyGuys);    
+
 }

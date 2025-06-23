@@ -1,6 +1,6 @@
 const productName = "Quark's Bar";
 const description = 'Located in Deep Space 9, near Bajor in the Alpha Quadrant';
-const reviews = [
+const reviews = [ // Data to be displayed on the web page
   {
     reviewer: 'Marcus Aurilious',
     title: 'Better have a lot of latinum!',
@@ -37,8 +37,8 @@ const reviews = [
  * once you have the element you can add the product name to the span.
  */
 function setPageTitle() {
-  const pageTitle = document.getElementById('page-title'); // Get a pointer to 'page-title' element
-  pageTitle.querySelector('.name').innerHTML = productName;       // change the item with class=name to have what's in name
+  const pageTitle = document.getElementById('page-title');   // Get a pointer to 'page-title' element
+  pageTitle.querySelector('.name').innerHTML = productName;  // change the item with class=name to have what's in name
 //  Alternative Technique
 //  const titleWord = pageTitle.querySelector('.name');
 //  titleWord.innerHTML = name;
@@ -60,14 +60,14 @@ function setPageDescription() {
 function displayReviews() {
   const main = document.getElementById('main');  // Get to the div that will hold the reviews
 
-  reviews.forEach((aReview) => {
+  reviews.forEach((aReview) => {  // Loop through the array of reviews 
     const container = document.createElement('div');  // Create a div hold the review
     container.setAttribute('class','review');         // add class='review' to the div
     addReviewer(container, aReview.reviewer);         // Send the method the parent and data to add
     addRating(container, aReview.rating);             // Send the method the parent and data to add           
     addTitle(container, aReview.title);               // Send the method the parent and data to add 
     addReview(container, aReview.review);             // Send the method the parent and data to add
-    main.appendChild(container);                      // Once the element is contructed, add to the parent
+    main.appendChild(container);                      // Once the element is constructed, add to the parent
   } ) 
 
 }
@@ -81,7 +81,7 @@ function displayReviews() {
  */
 function addReviewer(parent, name) {
 const reviewer = document.createElement('h4');  // Create an h4 element
-reviewer.innerText = productName;               // assign the productproductName to the h4 tag
+reviewer.innerText = name;                      // assign the reviewer Name to the h4 tag
 parent.appendChild(reviewer);                   // add the reviewer as a child to the parent
 }
 

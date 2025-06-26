@@ -18,6 +18,13 @@ import { appConfig } from './app/app.config';                      // Angular ap
 //        .component is assume
 // The name of the import must match an export class in a Typescript file
 import {App} from './app/app'; // Get the Angular component stuff from './app/app'
+                               //    /app - folder containing the Component file
+                               //    app  - prefix for all the files related to the component
+                               //
+                               //           app.html    - html and Angular code for the page
+                               //           app.css     - styling for the page
+                               //           app.ts      - data and processing for the page
+                               //           app.spec.ts - automated testing for the page
 
 // Clearer coding technique
 //import { App } from './app/app.component'; // Get the Angular component stuff from './app/app'

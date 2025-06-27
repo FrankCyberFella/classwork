@@ -81,7 +81,12 @@
         <!-- We have to generate one element in the html for each element in array  -->
         <!--            in the array checkbox values                                -->    
         <p>Do you like any sports?</p>
-       
+        <div>
+        <!-- when the this checkbox changes, run the function CheckAllOptions-->
+        <!-- the change event fire (occurs) whenever the state/content of input element changes -->
+        <input type="checkbox" (change)="CheckAllOptions()"/>
+        <span>Select All</span>
+       </div>
         <!-- *ngFor will process all the elements in a Typescript array             -->
         <!-- We will generate a <div> for each element in the checkbox array        -->
         <!-- *ngFor works like a forEach in C3 or Java                              -->

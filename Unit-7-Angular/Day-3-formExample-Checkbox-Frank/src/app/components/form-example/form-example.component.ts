@@ -86,5 +86,18 @@ export class FormExampleComponent {
     return this.sports.filter((aCheckBox) => aCheckBox.checked)
   } // End of checkBoxResult() function
 
+   // This function will check (or uncheck) all items in the checkbox list
+  CheckAllOptions() {
+    // if all checkboxes are checked - uncheck them all
+    if(this.sports.every((aCheckBox) => aCheckBox.checked == true)) {
+      // Go through all the checkboxes in the array and uncheck them
+      this.sports.forEach((anElement) => anElement.checked = false)
+    }
+    else { // if all checkboxes are unchecked - check them all
+      this.sports.forEach((aBox) => aBox.checked = true)
+
+    }
+    
+  }
 
 } // end of export

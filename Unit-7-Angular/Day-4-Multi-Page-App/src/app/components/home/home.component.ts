@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  pageTitle = 'Welcome to Grand Circus AHBC August, 2024 -  Angular App';
+  pageTitle = 'Welcome to Grand Circus AHBC March 2025 -  Angular App';
   rightnow  = Date();
   currentdatetime = Date().substring(0,15);
 }

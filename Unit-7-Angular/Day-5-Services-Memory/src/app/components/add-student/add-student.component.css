@@ -1,0 +1,25 @@
+
+.formControl {
+      display: flex;
+      align-items: center /* Vertically align items */
+      margin-bottom: 15px;
+      width :auto;
+}
+.formControl label {
+    flex: 1;             /* Allows label to take up available space */
+    text-align: right;   /* Justify label to the right */
+    padding-right: 15px; /* Space between label and input */
+    font-weight: bold;
+    color: #333;
+}
+.formControl input[type="text"],
+.formControl input[type="date"],
+.formControl input[type="number"],
+.formControl textarea {
+    flex: 2; /* Allows input to take more space than label */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width */
+    font-size: 16px;
+}

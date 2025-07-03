@@ -3,7 +3,7 @@ import { StudentInfo }   from '../../interfaces/studentInfo';  // include the St
 import { FormsModule }   from '@angular/forms';
 import { CommonModule }  from '@angular/common';
 import { Router }        from '@angular/router';
-import { StudentService } from '../../services/student.service.memory';
+import { StudentService }from '../../services/student.service.memory';
 
 @Component({
   selector: 'add-student',
@@ -13,8 +13,8 @@ import { StudentService } from '../../services/student.service.memory';
   styleUrl:    './add-student.component.css'
 })
 export class AddStudentComponent {
-// Uses Dependency Injection to define the variable Studentervice,
-//        create an instanceof StudentService and assign that to the Studentervice
+// Uses Dependency Injection to define the variable StudentService,
+//        create an instance of StudentService and assign that to the StudentService
 // also Dependency Injects the Router into the router variable (so we can go to different pages)
 constructor(private studentService  : StudentService, 
             private router          : Router) {}
@@ -33,14 +33,15 @@ public newStudent : StudentInfo =  {
 
 // This method method called when the submit is clicked in the html form
 // it receives a new student object with values entered on form from the user
-// the it tells the router to go the /students page
+// It calls the service method to add the student
+// then it tells the router to go the /students page
 //funcname(parameter : data-type) - using interface as a data-type
   addStudent(newStudent  : StudentInfo) {
-    console.table(newStudent);
+  //console.table(newStudent);  // optional for verifying data received from the html
     this.studentService.addStudent(newStudent) // call the service to add the newStudent to th data source
     this.router.navigate(['/students']) // Tell the router to go to the /students page
   }
   cancelButtonClicked() {
-    this.router.navigate(['/students']) // Tell the router to go to the /Student page
+    this.router.navigate(['/students']) // Tell the router to go to the /students page
   }
 }

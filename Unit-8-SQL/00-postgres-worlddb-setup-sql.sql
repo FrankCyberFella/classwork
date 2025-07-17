@@ -16,7 +16,7 @@ CREATE TABLE country (
     continent varchar(64) NOT NULL,
     region varchar(64) NOT NULL,
     surfacearea real NOT NULL,
-    indepyear smallintim,
+    indepyear smallint,
     population integer NOT NULL,
     lifeexpectancy real,
     gnp numeric(10,2),

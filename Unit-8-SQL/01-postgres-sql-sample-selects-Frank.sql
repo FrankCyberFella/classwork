@@ -14,7 +14,10 @@
 --      WHERE    - rows to include in the result - WHERE predicates are similar to C#/Java predicate (a predicate is conditions)
 --      ORDER BY - sequence of rows in the result
 --                 without an ORDER BY the sequence of the rows in the result is not predictable
---                 if the sequence of teh rows in teh result matter - code an ORDER BY
+--                 if the sequence of the rows in the result matter - code an ORDER BY
+--                 default sequence is ascending
+--                 you may specify the sequence use ASC or DESC
+--
 --
 -- WHERE predicates:
 --
@@ -119,3 +122,68 @@ select gambler_name, monthly_salary
 select gambler_name, monthly_salary
   from gambler
  where monthly_salary between 2000 and 10000; 
+
+--
+-- Show the gambler names in alphabetical order
+--
+select gambler_name   -- columns to include in result 
+  from gambler        -- table with the data
+order by gambler_name;-- sequence of rows in the result - default order is ascending
+
+--
+-- Show the gambler names in reverse alphabetical order
+select gambler_name			  -- columns to include in result		
+  from gambler				  -- table with the data
+order by gambler_name DESC;  -- sequence of rows in the result - DESC indicates descending order
+--
+-- Show everyone's annual salary (monthly_salary * 12)
+--  We can do arithmetic on a select to create a new column (derived column)
+--  Derived columns do not have names
+--
+-- the AS phrase will add a column name to a derived column or rename an exisiting column in result
+-- AS will convert the new name to all lowercase
+-- AS does not allow spaces between the new name
+-- Use _ to separate the parts of a name
+--    or enclose the name in double quotes to have spaces or respect the case of the name
+--
+-- The AS name may be used in an ORDER BY
+-- The AS phase MAY NOT used in a WHERE
+select gambler_name
+     , monthly_salary * 12  -- calculate annual salary 
+  from gambler
+;
+-- Show everyone's annual salary (monthly_salary * 12) with the title Annual_Salary
+--  We can do arithmetic on a select to create a new column (derived column)
+--
+select gambler_name as Name
+     , monthly_salary * 12 as "Annual Salary" -- calculate annual salary with the name Annual_Salary 
+  from gambler
+;
+-- Show everyone's annual salary (monthly_salary * 12) with the title Annual_Salary
+-- We can do arithmetic on a select to create a new column (derived column)
+-- Show the highest salaries first
+--
+select gambler_name as Name
+     , monthly_salary * 12 as Annual_Salary -- calculate annual salary with the name Annual_Salary 
+  from gambler
+order by Annual_Salary desc 
+--order by monthly_salary * 12 desc -- you may also repeat the derivation of the value on the order by
+;
+
+-- Show everyone's annual salary (monthly_salary * 12) with the title Annual_Salary
+-- We can do arithmetic on a select to create a new column (derived column)
+-- Show the highest salaries first
+-- Only show those with annual salary greater than 500000
+-- Since AS named columns cannot be used in a WHERE clause
+--      we must repeat the derivation of the value in the where clause
+--
+select gambler_name as Name
+     , (monthly_salary * 12) as Annual_Salary -- calculate annual salary with the name Annual_Salary 
+  from gambler
+ where (monthly_salary * 12) > 500000  -- only include those with Annual Salary > 500000
+order by Annual_Salary desc 
+;
+
+
+
+

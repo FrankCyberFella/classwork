@@ -18,7 +18,7 @@
 
 -- Show Populations of all countries in acscending order
 select population          -- columns to include in the result
-  from country             -- table with the columns ti include in the results
+  from country             -- table with the columns to include in the results
  order by population asc   -- see the columns in the result in ascending population order
 ;
 
@@ -110,10 +110,10 @@ select name, lifeexpectancy        -- columns to see in the result
 from country                       -- table with the columns
 where lifeexpectancy is not null   -- only include rows where lifeexpectancy values that are not null
 order by lifeexpectancy desc       -- see them from high to low order
-limit 10                           -- limit the result to 10 rows instead of all rows that match the WHERE clause
+--limit 10                           -- limit the result to 10 rows instead of all rows that match the WHERE clause
 ;
 --------------------------------------------------------------------------------------------------------
--- Concatenating values (like + in Java with Strings)
+-- Concatenating values (like + in C#/Java with Strings)
 --
 -- the concat operator (||) may be used to concatenate character (string) values in a result
 --
@@ -161,6 +161,8 @@ select name || ', ' || district   -- concatenate the city name a commma-space an
 --  if the requirement says "average" - avg() 
 --  if the requirement says "for each" or "by each" - GROUP BY
 --
+--  Nulls are ignored by aggregate functions
+--
 -- AVG(), SUM() may only be used with numeric data types
 -- MIN(), MAX() may be used with numeric, character, date, time datatypes
 --
@@ -180,9 +182,9 @@ select   continent, avg(lifeexpectancy)  -- a column used in the GROUP BY may be
 group by continent   -- perform the aggregate function for each unique continent - one row in result for each continent
 ;
 -- Show the average life expectancy in the world for each continent
--- ONLY columns used in the GROUP BY are allowed yto be included on the SELECT
-select    continent
-  --     , region  -- region is not allowed because it is not included in a group by
+-- ONLY columns used in the GROUP BY are allowed to be included on the SELECT
+select   continent
+--       , region  -- region is not allowed because it is not included in a group by
          , avg(lifeexpectancy)  -- a column used in the GROUP BY may be coded on the SELECT
   from   country
 group by continent   -- perform the aggregate function for each unique continent - one row in result for each continent
@@ -232,12 +234,20 @@ select name, min(surfacearea)
   order by min(surfacearea) asc
   limit 1
 ;
+--
+-- average surface area for each continent but not more that 5
+--
+select continent, avg(surfacearea) -- show average surface area
+  from country       -- table with the data we want
+ group by continent  -- for each continent
+ limit 5             -- but not more than 5
+ ;
 
 -- Show The 10 largest countries (by surface area) in the world
 select name,surfacearea
   from country
-order by surfacearea desc
-limit 10
+order by surfacearea desc -- sort the highest ones first to help get the top 
+limit 10   -- show only the first 10 rows
 ;
 -- Show The 10 largest countries (by surface area) in the world
 select name,max(surfacearea)

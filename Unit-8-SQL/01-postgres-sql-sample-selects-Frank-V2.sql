@@ -25,8 +25,23 @@
 --        IN(list-of-values)      -- alterative to a series of = OR
 --        NOT IN(list-of-values)  -- alterative to a series of != AND
 --        BETWEEN value AND value
+--
+--  Null in relational data/SQL means unknown (I don't know value)
+--  Nulls require speciall treatment in SQL
+--
+--  Cannot use any of conditional operators on a null value
+--
+--     colmmn =  null is not valid
+--     colmmn <  null is not valid
+--     colmmn != null is not valid
+--
+--     any operation with a null is a null
+--
+--     when sorting all null values are sorted together
+--
 --        IS NULL          -- special predicate for checking to see if column is null 
 --        IS NOT NULL      -- special predicate for checking to see if column is not null 
+--
 --        LIKE    (use wildcards: % means 0 to any number of any characters
 --                                _ means exactly any one character
 --                'word%'  - starts with word
@@ -183,7 +198,55 @@ select gambler_name as Name
  where (monthly_salary * 12) > 500000  -- only include those with Annual Salary > 500000
 order by Annual_Salary desc 
 ;
+--
+-- Show everyone's name and address in alphabetical order
+--
+select gambler_name, address
+  from gambler
+order by address Desc 
+;  
 
-
-
-
+--
+-- Show everyone's name and address in alphabetical order
+-- only if the address is known
+--
+select gambler_name, address
+  from gambler
+where address is not null  
+order by address Desc 
+;  
+--
+-- Show everyone's name and address in alphabetical order
+-- only if the address not known
+--
+select gambler_name, address
+  from gambler
+where address is null  
+order by address Desc 
+;  
+--
+-- Show me gamblers with an 'd in their name
+--
+select gambler_name
+  from gambler
+where gambler_name like '%d%' -- case sensitive like only for lower case 'd' matches
+;
+--
+-- Show me gamblers with an 'd in their name
+--
+select gambler_name
+  from gambler
+where gambler_name ilike '%d%' -- case insensitive like search for upper or lowercase 'd' matches  
+;
+--
+-- Show me the casino names in the host table 
+--
+select casino_name
+  from host
+;
+--
+-- Show me the unique casino names in the host table 
+--
+select distinct casino_name  -- disticnt will only show unique values in the column
+  from host                  -- disticnt will also sort in ascending by the column specified
+;

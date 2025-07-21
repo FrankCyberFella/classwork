@@ -1,6 +1,6 @@
 -- Some common Postgres SQL string function examples
 --
--- This code assumes usage of the world database, country table
+-- This code assumes usage of the vegasdb database, country table
 --
 -- ||                                           -- string concatenation operator
 -- lower(string)                                -- returns string in lower case
@@ -41,5 +41,6 @@ select gambler_name                                  -- gambler name
       ,ltrim('$-19.95','-$') as no_dash_$    -- remove leading - or $ from string
       
 from gambler -- Table containing data needed
-limit 10     SO-- Limit result to first 10 rows
+limit 5      -- Limit result to first 5 rows (postgres only - all data base managers have this,
+             --                                                with different implement)
 ;

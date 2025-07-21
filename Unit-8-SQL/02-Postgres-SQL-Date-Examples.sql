@@ -3,12 +3,14 @@
 --
 -- USA format: 'mm/dd/yyyy'   United States
 -- EUR format: 'yyyy-mm-dd'   European
--- JIS format: 'dd.mm.yyyy'   Japanese industrial standard
+-- JIS format: 'dd.mm.yyyy'   Japanese industrial standard (ISO format)
 --
--- You don't have to know or case what formatthe date is stored in
+-- You don't have to know or care what format the date is stored in
 -- (actually it's none of those)
 --
 -- Each database manager has a default display format (USA, EUR, JIS)
+--
+-- When coding a data as a literal you can use any format (USA, EUR, JIS) 
 
 select birth_date, gambler_name   -- columns in the result
   from gambler                     -- table with the rows 
@@ -44,7 +46,7 @@ select gambler_name, birth_date,
 	  to_char(birth_date, 'Month dd, yyyy')              as Month_Full,
 	  to_char(birth_date, 'Mon dd, yyyy')                as Month_Abbrev,
 	  to_char(birth_date, 'Day Month dd, yyyy')          as Human_Format,
-	  current_date - birth_date                          as Days_Old,
+	  current_date - birth_date                          as Days_Old,  -- simple subtract returns number of days
 	  (current_date - birth_date) / 365.25               as Years_Old_EXACT,
 	  round(((current_date - birth_date) / 365.25),1)    as Years_Old_1_Decimal,
 	  AGE(current_date, birth_date)                      as Date_Diff,

@@ -101,7 +101,7 @@ drop table if exists pet       cascade; -- drop even if it has dependents
 CREATE TABLE pet_types 
 (
 --  column-name     data-type   nullness,
-	pet_type_id     serial      not null, -- serial tells postgres to autimatically generate a unique integer value
+	pet_type_id     serial      not null, -- serial tells postgres to automatically generate a unique integer value
 	name            char(15)    not null, -- char is fixed size - specify the fixed, actual size
 	species         varchar(50) not null,  -- varchar is variable size - you specifu the max size
 	CONSTRAINT pk_pet_type_id PRIMARY KEY (pet_type_id)
@@ -110,7 +110,7 @@ CREATE TABLE pet_types
 
 -- 
 -- Create the owner table
--- (Parent Table to owner - parents must be created before dependents)
+-- (Parent Table to pet - parents must be created before dependents)
 --
 Create table owner
 (
@@ -125,19 +125,32 @@ Create table owner
 ;
 -- 
 -- Create the pet table
--- (Dependent Table to pet and owner -Dependents must be created after parents)
+-- (Dependent Table to pet and owner - Dependents must be created after parents)
+--
+-- ON DELETE in the Foreign Key Constraint says what to with rows in this table
+--           if the parent row is deleted
+--
+--      ON DELETE CASCADE - Delete the dependent row in this table too
+--
+--      on DELETE SET NULL - Set the foreign key column in this table
+--                               that matches the primary key of the row
+--                               being deleted in the parent to NULL
+--                           The foreign key column must allow Nulls
+--                               It can't be part of the primary key,
+--                                           UNIQUE
+--                                           defined as NOT NULL
 --
 Create table pet
 (
 pet_id       serial        not null,
 name         varchar(250)  not null,
-pet_type_id  integer       not null, -- match to an existing in parent
+pet_type_id  integer       not null, -- match to an existing in parent (foreign key)
                                      -- serial will create new value
 owner_id     integer       not null, 
 CONSTRAINT pk_id PRIMARY KEY (pet_id),
 CONSTRAINT fk_pet_type_id FOREIGN KEY(pet_type_id) 
-           REFERENCES pet_types(pet_type_id),
+           REFERENCES pet_types(pet_type_id) ON DELETE CASCADE,
 CONSTRAINT fk_ownerid FOREIGN KEY(owner_id) 
-           REFERENCES owner(owner_id)	  
+           REFERENCES owner(owner_id) ON DELETE SET NULL	  
 )
 ;

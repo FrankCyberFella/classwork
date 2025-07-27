@@ -56,6 +56,7 @@
 -- BEGIN TRANSACTION - Mark the start of a unit of work
 -- 
 -- COMMIT - End a unit of work and save changes - automatically done if no errors
+--          Starts a new unit work
 -- 
 -- ROLLBACK - End a unit of work and undo changes - automatically done if errors
 --
@@ -63,6 +64,11 @@
 -- The entire file is considered one unit of work
 -- Any error in the SQL file will cause all INSERT, UPDATE, DELETE processing 
 --     before the error to be undone
+--
+-- It's good idea to put a commit after a set processing is done in your SQL file
+-- This will save all the work that was done since the start of the file or last commit
+--
+-- commit and rollback are more common when SQL is in a program instead  of file
 ---------------------------------------------------------------------------------------------------------------------------------------
 --  INSERT - add a row to a table
 --
@@ -116,7 +122,7 @@
 --
 delete from pet_types;  -- Delete all existing rows from the table
                         -- ONLY DO THIS IF YOU WANT TO EMPTY THE TABLE!
-
+						
 INSERT into pet_types 
        (name , species) -- columns names specified
 values('Xolo', 'Dog'); -- pet_type-id not specified as it is auto generated
@@ -165,6 +171,10 @@ values('Cat', 'Siamese'); -- pet_type-id not specified as it is auto generated
 
 select * from pet_types;
 
+-- At this point we have inserted all the data in pet_types
+-- We will commit that data so we don't lose it if an error occurs later in the file	
+Commit;  -- save all the changes we've made to the data base since the last commit
+
 --
 -- Insert some rows into owner 
 -- Owner is parent table to pet
@@ -192,7 +202,7 @@ Values('Frank', 'Fella'   , null    , 'Phoenix'  , 'AZ'),
       ('Kevin', 'Gibbs II', null    ,  null      , 'MI')
 ;
 select * from owner;
-
+commit; -- Save work done since last commit
 --
 -- Now that the parent tables have data
 --     we can add data to any dependent tables
@@ -255,6 +265,7 @@ Values('Chole'
 	 ,(select owner_id    from owner where first_name = 'Cam' and last_name = 'Johnson')
 	 ) -- end the INSERT statement
 ;
+commit; -- save all work done since last commit
 
 -- UPDATE - change existing data in a table
 --
@@ -321,5 +332,5 @@ where first_name = 'Kathy' -- this will cause all people named 'Frank' to be del
 ;  
 select * from owner;
 
--- REFERENTIAL INTEGRITY
+
 

@@ -11,7 +11,8 @@ import  java.util.Objects;
 //
 //  It has: Data members (fields) to hold the data
 //          Constructors to initialize the data members
-//          Getters and Setters to access and modify the data members
+//          Standard Getters and Setters to access and modify the data members
+//            (Standard names:  getVarableName  setVariableName)
 //          toString() method to return a string representation of the object
 //          equals() method to compare two objects for equality
 //          hashCode() method to return a hash code for the object

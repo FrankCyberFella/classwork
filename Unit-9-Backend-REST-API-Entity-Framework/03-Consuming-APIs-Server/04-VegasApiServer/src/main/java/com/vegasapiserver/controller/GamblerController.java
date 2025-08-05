@@ -81,7 +81,7 @@ public class GamblerController {
         // Call the DAO method to get all gamblers
         //   and return the list of gamblers it gives us
         return gamblerDao.getGamblers();
-    }  // End getAllG
+    }  // End getAllGamblers
 
     // Define a controller method to handle a GET request to a specific Gambler by id
     //

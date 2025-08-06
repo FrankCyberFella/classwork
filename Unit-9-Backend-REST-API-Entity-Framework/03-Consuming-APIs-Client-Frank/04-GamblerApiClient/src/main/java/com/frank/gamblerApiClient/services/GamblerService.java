@@ -79,10 +79,11 @@ public class GamblerService {
   private final RestTemplate restTemplate = new RestTemplate();
 
   public GamblerService() {
-    BASE_URL = "http://localhost:8081/";  // Assign the API URL base string to the BASE_URL
+   // BASE_URL = "http://localhost:8081/";  // Assign the API URL base string to the BASE_URL
                                           // Some people include the / at the end spe don't
                                           // If you include the / you don't need it later
                                           // If you don't include the / you have to add it later
+ BASE_URL = "https://6891e7fa447ff4f11fbe463a.mockapi.io/";
   }
 
   /**

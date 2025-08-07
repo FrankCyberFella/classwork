@@ -30,7 +30,7 @@ import java.util.List;
                     //            networked applications
                     //      REST is protocol for communication between client and server
                     //           All request and repsonses follow a standard format
-@RequestMapping("/v1")
+@RequestMapping("/v1") // sets a suffix for all paths used in the file
 public class GamblerController {
     // This is where you will define your controller methods
     // Controller methods are the methods that handle HTTP requests

@@ -43,7 +43,7 @@ create table casino
 -- Create gambler table representing gamblers 
 -- ---------------------------------------------------------------------------
 create table gambler
-    (id                   	integer                     not null,
+    (id                   	serial                      not null,
      gambler_name         	varchar(255)                not null,
      address              	varchar(255),
      birth_date           	timestamp without time zone not null,

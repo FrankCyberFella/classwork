@@ -1,0 +1,7 @@
+/* style the date on the page */
+* {
+    margin-left: 20px;
+}
+#datetime {
+    color:green;
+}

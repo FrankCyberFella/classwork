@@ -1,0 +1,45 @@
+<!--------------------------------------------------------------------------------------->
+<!-- This HTML uses the angular matToolTip feature to display tool tips when hovering  -->
+<!--                                                                                   -->
+<!-- The Angular Matreial UI Compomemt library must be installed in order matToolTip   --> 
+<!--                                                                                   -->
+<!-- To install the matToolTip feature, from a GitBash session enter the command:      --> 
+<!--                                                                                   -->
+<!--                ng add @angular/material                                           -->
+<!--                                                                                   -->                
+<!--       Then: Pick a color theme and answer "Yes" to all the questions              -->
+<!--                                                                                   -->    
+<!--  Be sure you import MatTooltipModule in the typescript file of the component      -->
+<!--                                                                                   -->                                              
+<table id="movieInfoTable">
+    <tr>
+        <th>Movie</th>
+        <th>Year</th>
+        <th></th>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <th>Released</th>
+        <th>Director</th>
+    </tr>
+    <!-- {{variable-defined-in-the-ts-file}}-->
+    <!--  moviesList is an array in the ts-file       -->
+    <!--  aMovie is one movie in the moviesList array -->  
+    <tr *ngFor="let aMovie of moviesList">
+        <td>{{aMovie.title}}</td>
+        <td id="relyear">{{aMovie.releaseYear}}</td>
+        <td>{{aMovie.director}}</td>
+               <td > <img id=editIcon src="../../../assets/images/EditIconBlack.png" 
+                 matTooltip="Edit Movie"
+                 matTooltipPosition="above"
+               [routerLink]="['/updateMovie']"  [state]="{ theMovie: aMovie }"></td>
+        <td > <img id=trashCan src="../../../assets/images/TrashCan.png"
+                  matTooltip="Delete Movie"
+                   matTooltipPosition="right"
+                  (click)="deleteMovie(aMovie)"/></td>
+</tr>    
+</table>
+<input type="button" 
+       id="addMovieButton" 
+       value="Add Movie" 
+       routerLink="/addmovie"/>

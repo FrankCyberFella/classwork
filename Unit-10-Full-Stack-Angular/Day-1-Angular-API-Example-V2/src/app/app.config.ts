@@ -1,7 +1,7 @@
 // This file identifies major features of Angular you will be using
 
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter }     from '@angular/router';
 // HTTP is the protocol for interacting with external servers
 //
 // HTTP: GET    - retrieve data from a server
@@ -11,11 +11,11 @@ import { provideRouter } from '@angular/router';
 // Gain access to ANgular HTTP support via HttpClient
 import { provideHttpClient } from '@angular/common/http';
 
-import { routes } from './app.routes';
+import { routes }                 from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   // the providers attribute is an array of constructors major features you are using
   // include the provideHttpClient() as a provider if using HTTP to interact with servers
-  providers: [provideRouter(routes), provideHttpClient(), provideAnimationsAsync()]
+  providers: [provideRouter(routes), provideHttpClient(), provideAnimationsAsync(), provideAnimationsAsync()]
 };

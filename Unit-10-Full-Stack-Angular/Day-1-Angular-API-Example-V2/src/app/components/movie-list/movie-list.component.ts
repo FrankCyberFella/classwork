@@ -39,7 +39,7 @@ export class MovieListComponent implements OnInit {
 //     var-name   : data-type
 public moviesList : any[] = []; // This is an array of MoviesInfo objects
 
-// empty constructor to just have the service dependency injected into the component
+// empty constructor to just have the service and router dependency injected into the component
 // It could have process, but in this example there is other data to initialize except the moviesList                      
 // The service and router are dependency injected into this constructor
 constructor(private movieService  : MoviesService
@@ -55,14 +55,20 @@ constructor(private movieService  : MoviesService
 //    so it is available for the HTML page
 async ngOnInit() {
  
-  await this.fetchDataFromApi()
+  // The method we are calling is performing asynchronous (async) call to the API
+  // As async call means one the statement that calls the method is run
+  //    we do not wait for the method to complete like we would for a normal method call
+  // The method may not complete before the next statement in the program is run
+  // await is coded on async calls to wait until method completes before continuing
+
+  await this.fetchDataFromApi()  // call a method defined in this component (it's need more than once)
   
 } 
 
 async fetchDataFromApi() {
   // We have wait for the asynchronous process of retrieving the data before we gone
   // getMoviesList() in the movieServices async calls an external API
-  const theData  = await this.movieService.getMoviesList(); // Initialize our moviesList from service
+  const theData  =  await this.movieService.getMoviesList(); // Initialize our moviesList from service
   // once the data comes back from the service, we can assign it to our array
   this.moviesList = theData
 
@@ -72,12 +78,12 @@ async fetchDataFromApi() {
  
   async updateMovie(aMovie : MoviesInfo) {
     await this.movieService.updateMovie(aMovie)
-    this.fetchDataFromApi();
+    this.fetchDataFromApi();  // Refresh data to reflect teh update
   }
 
   async deleteMovie(aMovie :MoviesInfo) {
     await this.movieService.deleteMovie(aMovie)
-    this.fetchDataFromApi()
+    this.fetchDataFromApi()  // Refresh the data to reflect the delete
   }
  
 

@@ -1,16 +1,16 @@
-<!--------------------------------------------------------------------------------------->
-<!-- This HTML uses the angular matToolTip feature to display tool tips when hovering  -->
-<!--                                                                                   -->
-<!-- The Angular Matreial UI Compomemt library must be installed in order matToolTip   --> 
-<!--                                                                                   -->
-<!-- To install the matToolTip feature, from a GitBash session enter the command:      --> 
-<!--                                                                                   -->
-<!--                ng add @angular/material                                           -->
-<!--                                                                                   -->                
-<!--       Then: Pick a color theme and answer "Yes" to all the questions              -->
-<!--                                                                                   -->    
-<!--  Be sure you import MatTooltipModule in the typescript file of the component      -->
-<!--                                                                                   -->                                              
+<!-------------------------------------------------------------------------------------------->
+<!-- This HTML uses the angular matToolTip feature to display tool tips when hovering       -->
+<!--                                                                                        -->
+<!-- The Angular Material UI Component library must be installed in order matToolTip        --> 
+<!--                                                                                        -->
+<!-- To install the matToolTip feature, from an Angular GitBash session enter the command:  --> 
+<!--                                                                                        -->
+<!--                ng add @angular/material                                                -->
+<!--                                                                                        -->                
+<!--       Then: Pick a color theme and answer "Yes" to all the questions                   -->
+<!--                                                                                        -->    
+<!--  Be sure you import MatTooltipModule in the typescript file of the component           -->
+<!--                                                                                        -->                                              
 <table id="movieInfoTable">
     <tr>
         <th>Movie</th>
@@ -22,21 +22,31 @@
         <th>Released</th>
         <th>Director</th>
     </tr>
-    <!-- {{variable-defined-in-the-ts-file}}-->
-    <!--  moviesList is an array in the ts-file       -->
-    <!--  aMovie is one movie in the moviesList array -->  
-    <tr *ngFor="let aMovie of moviesList">
+    <!-- {{variable-defined-in-the-ts-file}}                -->
+    <!--  moviesList is an array in the ts-file             -->
+    <!--  aMovie is one movie in the moviesList array       --> 
+    <!-- @ngFor loop through an array defined in            --> 
+    <!--     the .ts file for the component                 -->   
+    <!-- Note: in the editIcon element, we link             --> 
+    <!--       to a path when the element is clicked        -->
+    <!--       and send it the Movie object that was clicked-->  
+    <!--       [state] = {object-to-send}                   -->              
+    <!-- Note: in the trashCan element, we run a method     --> 
+    <!--       in the .ts when the element is clicked       -->      
+    <tr *ngFor="let aMovie of moviesList">   <!-- Generate a <tr> for each element in the moviesList array -->
         <td>{{aMovie.title}}</td>
         <td id="relyear">{{aMovie.releaseYear}}</td>
         <td>{{aMovie.director}}</td>
-               <td > <img id=editIcon src="../../../assets/images/EditIconBlack.png" 
-                 matTooltip="Edit Movie"
-                 matTooltipPosition="above"
-               [routerLink]="['/updateMovie']"  [state]="{ theMovie: aMovie }"></td>
+        <td > <img id=editIcon src="../../../assets/images/EditIconBlack.png" 
+            matTooltip="Edit Movie"
+            matTooltipPosition="above"
+            [routerLink]="['/updateMovie']"  [state]="{ theMovie: aMovie }">
+        </td>
         <td > <img id=trashCan src="../../../assets/images/TrashCan.png"
                   matTooltip="Delete Movie"
-                   matTooltipPosition="right"
-                  (click)="deleteMovie(aMovie)"/></td>
+                  matTooltipPosition="right"
+                  (click)="deleteMovie(aMovie)"/>
+        </td>
 </tr>    
 </table>
 <input type="button" 

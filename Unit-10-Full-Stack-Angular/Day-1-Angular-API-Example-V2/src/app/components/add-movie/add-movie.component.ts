@@ -36,8 +36,10 @@ public newMovie : MoviesInfo =  {
     // call the service to add the newMovie to the data source
     await this.movieService.addMovies(newMovie)
 
-    const theData  = await this.movieService.getMoviesList(); // Initialize our moviesList from service
+    // Refresh our data from the data source
+    const theData  = await this.movieService.getMoviesList(); // Refresh our moviesList from service
 
+    // Got to the /movies page
     this.router.navigate(['/movies']) // Tell the router to go to the /movies page
   }
 

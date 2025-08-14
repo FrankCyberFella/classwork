@@ -4,7 +4,7 @@
 
 <!-- [ngModel] specifies angular two-way binding -->
 <!-- (ngSubmit) say run the method specified when the submit button is clicked    -->
-<!-- so here when submit is clicked we run the addMovie method for this component -->
+<!-- so here when submit is clicked we run the updateMovie method for this component -->
 <!--    with the newMovie object that was filled in by the user                   -->
 <form  id="theForm" (ngSubmit)="updateMovie(newMovie)">
     <div>
@@ -26,6 +26,7 @@
         <input type="text" id="directorField" [(ngModel)]="newMovie.director" name="director"/>
     </div>
 <div id="buttonarea">
+    <!-- When the submit button is clicked Angular will follow the instruction (ngSubmit) for the form -->
     <input class="abutton" id="submitButton" type="submit" value="Click to Submit"/> 
     &nbsp;
     <input class="abutton" 

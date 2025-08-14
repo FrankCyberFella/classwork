@@ -19,7 +19,9 @@ constructor(private movieService  : MoviesService,
             private router        : Router) {}
 
 // Define a place to hold a new movie when entered by the user 
-// Data from the web page will be used to fill in the values a new movie (two-way bind)
+// Data from the web page will be used to fill in the values an updated movie (two-way bind)
+// newMovie is initialized with the data passed to it when the router processed this component
+//      [state] = {a-movie-object} on the router path to get to this component      
 //     variable : data-type - using the interface as a data-type
 public newMovie : MoviesInfo =  { 
                                   id: 0,
@@ -28,9 +30,12 @@ public newMovie : MoviesInfo =  {
                                   director: ""
                                 }
 
+  // ngInit() contains processing you want Angular to do BEFORE it runs the constructor                              
   ngOnInit() {
+    // This will retrieve any data sent to component through
+    //      the [state] variable and initialize the newMovie object to it
     this.newMovie = history.state.theMovie
-    console.log('Received data:', this.newMovie)
+    // console.log('Received data:', this.newMovie)  //Optional for debugging
   }
 
 
@@ -42,8 +47,10 @@ public newMovie : MoviesInfo =  {
     // call the service to add the newMovie to the data source
     await this.movieService.updateMovie(newMovie)
 
+    // Retrieve the current state of the data after the update using the service
     const theData  = await this.movieService.getMoviesList(); // Initialize our moviesList from service
 
+    // Go to the /movies page
     this.router.navigate(['/movies']) // Tell the router to go to the /movies page
   }
   

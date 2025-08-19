@@ -2,7 +2,9 @@
 <h1>Welcome to the Gambler App!</h1>
 
 <h3> List of Gamblers ({{theGamblers.length}} gamblers)</h3>
-
+<!-- Table to display data stored in the component from API call               --> 
+<!-- @for will generate one set of tags specified between { }                  --> 
+<!-- @empty specifies what to disply if the array is empty (no tags generated) --> 
 <table id="GamblerInfoTable">
   @for(aGambler of theGamblers; track aGambler.id;) {
   <tr> 
@@ -19,6 +21,8 @@
 </table>
 &nbsp;&nbsp;
 <section>
+  <!-- Remember to add FormsModule to import for the compoenent     -->
+  <!-- (ngSubmit) run this method when the submit button is clicked -->
   <form (ngSubmit)="addGambler(newGambler)">
     <div>
       <label id="nameField">Name:</label>
@@ -41,6 +45,5 @@
       <button type="submit">Add New Gambler</button>
     </div>
   </form>
-
 
 </section>

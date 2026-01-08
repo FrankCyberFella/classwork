@@ -1,0 +1,13 @@
+<!-- This will list all the students we have in our .ts file     -->
+ <div>
+    <h3>These are some of the students in our class </h3>
+ </div>
+ <div> <!-- Hold the list student names -->
+    <!-- ol will be used to give us a formatted list-->
+     <ol>
+        <!-- We want one <li> tag for each person in our array of students -->
+        <li *ngFor="let aStudent of roster">
+            {{aStudent.name}}
+        </li>
+     </ol>
+ </div>

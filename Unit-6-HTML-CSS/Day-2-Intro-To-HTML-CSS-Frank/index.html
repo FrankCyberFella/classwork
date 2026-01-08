@@ -1,0 +1,113 @@
+<!-- This is an HTML Comment -->
+<!-- anything that starts with less-than-sign explanation-point is a directive to the browser -->
+<!-- a directive to the browser provides info the browser might need about the page           -->
+<!DOCTYPE html> <!-- Browser directive to tell it this file contains html - optional          -->
+<!-- an HTML file contains HTML tags and browser directives (directives are not displayed)    -->
+<!-- an HTML tag describes an element to be displayed when the page is given to the browswer  -->
+<!-- an HTML element has a start-tag and end-tag                                              -->
+ 
+<!-- <start-tag> </start-tag>                                                                 -->
+
+<!-- tags are enclosed in <> with the end-tag having the name: /start-tag                     -->
+
+<!-- an element is simply something on a web page     
+                                         -->
+<html lang="en"> <!-- container for all the html for the page & the language of the page  -->
+    <head> <!-- Information the browser needs for the page - NOT displayed                -->
+        <!-- the information in the head tag is rarely changed                            -->
+        <!-- the meta tag provides information to the browser                             -->
+        <meta charset="UTF-8"> <!-- Tells browser what character set to use for the page  -->
+        <!-- the viewport is the displayable part of the brower screen                    -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- the title element is probably the only thing you change in the <head>        -->
+        <title>Frank's Page</title> <!-- what is displayed on the browser tab for the page-->
+    
+        <!-- Connect this html to the CSS file that has it's styling  -->
+        <!-- <link> connects the html to an external file (a file outsied the html file)  -->
+        <!--  rel="" indicates the type of file you connecting to                         --> 
+        <!--  href="" the URL for the external file                                       -->  
+        <!--  a file URL is relative to the project folder                                -->  
+         <link rel="stylesheet" href="myStyles.css"
+    </head>
+    <body> <!-- containing for the primary content of the page - what is displayed in the browser -->
+        <header> <!-- Contains whatever want at the top of the page     -->
+            <!-- HTML provides header tags to display data bigger that normal text    -->
+            <!-- header tags:  <h1>  to <h6>  h1 is the biggest and they get smaller  -->
+            <h1>Grand Circus After Hours Boot Camp</h1>     
+            <h2>January - 2025</h2>
+            
+        </header>
+        <nav> <!-- the nav> section contains navigation links for the page   -->
+            <!-- the <a> (anchor tag) is where you specify links to external/other places -->
+            <!-- href="URL-to-go-to-when-clicked" -->   
+            <a href="contactInfo.html">Enter Contact Info</a>
+        </nav>
+        <main> <!-- convey the main content of pages-->
+            <div> <!-- allows organization of information on the page - optional -->
+                  <!-- Starts on a new line in page - space before the div       -->
+                  <!-- AND creates a stylable unit within the page               -->
+                <!-- <p> - Paragraph tag - puts content on a separate line - instead wrapping the text    -->
+                <!-- class="" allows a group of elements to share common characterics -->
+                    <p>This is a web page created for class</p>
+                <!-- id="" attribute assigns a name to an element for styling et al -->
+                <p id="p2">It's not much</p> 
+                <p class="normal">but it's a start!</p>
+            </div>
+            <section> <!-- optional major topic area of the main content / another stylable unit -->
+                <div id="Youssef">
+                    <p class="normal"> a paragraph in a section</p>
+                </div>
+            </section>
+            <section id="studentList">
+                <p>Some of the people in my class:</p>
+                <!-- <ol> creates an ordered list of content                           -->
+                <!-- <li> goes inside the <ol> element to define each item in the list --> 
+                <ol id="theStudents">  <!-- Create a list of elements/content -->
+                    <li>Kevin</li>
+                    <li>Missy</li>
+                    <li>Amber</li>
+                    <li>Preshous</li>
+                    <li>Kiana</li>
+                </ol>    
+                    
+                <!-- Have the browser create a table of our data -->
+                 <table>   <!-- Mark the start of an html table  -->
+                    <!-- one <tr> element for each row in the table        -->
+                    <!-- one <td> or <th> for each column in the table     -->   
+                    <!-- <td> used for column content                      -->
+                    <!-- <th> used for column header                       -->  
+                    <tr> <!-- column heading row                           -->
+                        <th>Heading 1</th>  <!-- column heading            -->
+                        <th>Heading 2</th>
+                        <th>Heading 3</th>
+                        <th>Heading 4</th>
+
+                    </tr>
+                    <tr>  <!-- define a row in the table                   -->
+                        <td>Cell 1</td> <!-- a column of data in the table -->
+                        <td>Cell 2</td> <!-- a column of data in the table -->
+                        <td>Cell 3</td> <!-- a column of data in the table -->
+                        <td>Cell 4</td> <!-- a column of data in the table -->
+                    </tr>  
+                     <tr>  <!-- define a row in the table                   -->
+                        <td>Cell 5</td> <!-- a column of data in the table -->
+                        <td>Cell 6</td> <!-- a column of data in the table -->
+                        <td>Cell 7</td> <!-- a column of data in the table -->
+                        <td>Cell 8</td> <!-- a column of data in the table -->
+                    </tr> 
+                    <tr>  <!-- define a row in the table                   -->
+                        <td>Cell 9</td> <!-- a column of data in the table -->
+                        <td>Cell 10</td> <!-- a column of data in the table -->
+                        <td>Cell 11</td> <!-- a column of data in the table -->
+                        <td>Cell 12</td> <!-- a column of data in the table -->
+                    </tr>            
+                 </table>
+
+            </section>
+
+        </main>
+        <footer> <!-- Stuff you want on the bottom of the page -->
+            Copyright 2025 - Bootcamps R Us, LLC
+        </footer>
+    </body> <!-- end-tag for the body     -->
+</html> <!-- end-tag for the html element -->

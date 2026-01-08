@@ -1,0 +1,77 @@
+/* This is a comment in CSS            */
+/* CSS defines formatting for the page */
+/* The general format: selector {
+                                  css rule;
+                                  css rule;
+                                }
+
+selectors are: tag-name - all elements defined with this tag
+               # - id="" elements with the same id=""  - used for specific element
+               . - class="" elements with the class="" - for a specific group of element
+*/  
+
+html { /* style all the elements within the html tag */
+    background-color: lightgoldenrodyellow;
+    font-size: 20px;
+    color:blue;
+}
+
+h2 { /* style all the h2 tags */
+  color: green
+}
+
+footer { /* style all the stuff in the footer */
+  color: red;        /* make the text color          */
+  margin-top: 50px;    /* move the text down this much */
+  font-size: 10pt;     /* set size of font px=pixels pt=pts */
+  text-align: center;
+}
+
+p { /* style all the paragraph tag content */
+  color: plum;    /* Set the text color  */
+  font-size: 12pt;  /* make font this size */
+}
+
+#p2 { /* style all elements with id="p2" */
+ color: orange;  /* set the text color */
+}
+
+div {  /* style all the divs and everything in them */
+  background-color : brown;
+}
+
+#Youssef {  /* style all elements with the id="Youssef" */
+  background-color: blue;
+}
+
+.normal { /* style all elements with class="normal" */
+  background-color: aquamarine;
+}
+
+/* style to <ol> of students in class */
+/* #theStudents to reference it's id  */
+/* ol to specify all <ol> tags - this would all <ol> tags not just the one we want */
+#theStudents {
+  color:chocolate;  /* set the text color */
+  font-style:italic;  /* set the style      */
+  list-style:square;  /* set what is used as a bullet for list items */
+  border-style:solid; /* Put a border aroung the element            */
+  border-color: darkmagenta; /* set the color of the border        */
+  border-width: 5px; /* set the width of the border                  */
+  border-radius: 5px; /* set rounded corners - the bigger the value the more rounded it is */
+  }
+
+  table { /* style all tables in the html */
+     border: 2px solid black; /* set the border width type color */
+  }
+
+  th, td { /* style all <th> and <td> tags in the html */
+    border: 1px dashed red;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+  }
+  th {
+    color: green;
+    border: 1px solid green;
+  }

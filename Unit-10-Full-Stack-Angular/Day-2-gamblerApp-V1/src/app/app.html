@@ -1,0 +1,65 @@
+<!-- This is main page for the Application -->
+<h1>Welcome to our Gambler Angular App</h1> 
+<h1>List of Gamblers</h1>
+
+<!-- Lets display the data in table -->
+<!-- We need to have one row in the table for each data item                   --> 
+<!-- We need to have column for each value we want to display                  --> 
+<!-- <tr> defines a row in teh table                                           -->
+<!-- <td> defines a column in the table                                        -->    
+<!-- {{variable}} one-way bind to the data defined in the .ts file             -->    
+<!-- *ngFor to loop through an array and generate an html element              --> 
+<!--        for each element in the array                                      --> 
+<!--  Be sure to include CommpmModule in the import section of the .ts file    -->
+<!-- Since *ngFor is deprecated, it still works, but might not some daya       -->
+<!-- Use  @for instead of *ngFor to generate html eleents for data in an array --> 
+<!-- Syntax for @for (elem-name of array-name; track variable-in-the-elem) {   -->   
+<!--                 elements-to-generated                                     -->
+<!--            } closing brace of @for                                        -->  
+<!--  track tells @for to keep track of where each element is on the page      -->
+<!--        in case you want to maintain the sequence of the data displayed    -->
+<!--        in the event of addinging or updating elements inteh array         -->
+        <p> Number of Gamblers: {{theGamblers.length}} </p>
+
+<table id="gamblerInfoTable">
+    <tr *ngFor="let aGambler of theGamblers"> 
+        <td>{{aGambler.id}}</td>
+        <td>{{aGambler.name}}</td>
+        <td>{{aGambler.address}}</td>
+        <td>{{aGambler.salary}}</td>
+        <td>{{aGambler.birthDate}}</td>
+    </tr>
+
+   <!--  @empty {<p>There are no gamblers</p>} -->
+</table> 
+
+<!-- The form to capture new gambler information                    -->
+<!-- It will remain hidden until the add gambler button is clicked  --> 
+<!-- [hidden] says hide this element if the expression is true      -->
+<!-- shouldDisplayForm will be set to true when it should displayed -->
+<!--     so we want to hide the form if shouldDisplayForm is false  -->
+<!--  !shouldDisplayForm is true  when shouldDisplayForm is false   -->    
+<!--  !shouldDisplayForm is false when shouldDisplayForm is true    -->
+<!-- (ngSubmit) says run this method when the form is submiited     -->    
+<!--  [hidden] = "!shouldDisplayForm" --> 
+<form (ngSubmit)="addGambler(newGambler)">
+    <div>
+        <label id="name">Enter Name:</label>    
+        <input id="nameField" type="text" [(ngModel)]="newGambler.name" name="Name" >
+    </div>
+    <div>
+        <label id="address">Enter Address:</label>    
+        <input id="addressField" type="text" [(ngModel)]="newGambler.address" name="Address" >
+    </div>
+    <div>
+        <label id="bdayField">Enter Birth Date:</label>    
+        <input id="bdayField" type="text" [(ngModel)]="newGambler.birthDate" name="BirthDate" >
+    </div>
+    <div>
+        <label id="salaryField">Enter Monthly Salary:</label>    
+        <input id="salaryField" type="number" [(ngModel)]="newGambler.salary" name="Salary" >
+    </div>
+    <div>
+        <button type="submit">Submit New Gambler</button>
+    </div>    
+</form> 

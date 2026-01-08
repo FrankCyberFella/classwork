@@ -1,0 +1,20 @@
+//                                      gambler                monthly  average
+//                    casino-name         Id   room-type       salary     bet
+  hosts.add(new Host("Ballys"           , 012, "Deluxe"      , 5000.00  , 75));
+  hosts.add(new Host("Ballys"           , 049, "Rack"        , 5000.00  , 65));
+  hosts.add(new Host("Binions Horseshoe", 054, "Presidential", 1000.00  , 10));
+  hosts.add(new Host("Ballys"           , 054, "dump"        , 2500.00  , 15));
+  hosts.add(new Host("Binions Horseshoe", 572, "Penthouse"   , 2000.00  , 25));
+  hosts.add(new Host("Harveys Casino"   , 191, "Penthouse"   , 25000.00 , 345));
+  hosts.add(new Host("Ballys"           , 382, "Rack"        , 16.50    , 2));
+  hosts.add(new Host("Binions Horseshoe", 382, "Rack"        , 5000.00  , 75));
+  hosts.add(new Host("Trump Plaza"      , 292, "Suite"       , 1000.00  , 25));
+  hosts.add(new Host("Binions Horseshoe", 012, "Presidential", 7500.00  , 45));
+  hosts.add(new Host("Ballys"           , 572, "Rack"        , 1000.00  , 20));
+  hosts.add(new Host("Trump Plaza"      , 049, "Non-Smoking" , 100000.00, 600));
+  hosts.add(new Host("Binions Horseshoe", 292, "Deluxe"      , 5000.00  , 55));
+  hosts.add(new Host("Ballys"           , 292, "Suite"       , 2250.00  , 20));
+  hosts.add(new Host("Trump Plaza"      , 572, "Non-Smoking" , 1000.00  , 18));
+  hosts.add(new Host("Binions Horseshoe", 191, "Penthouse"   ,  2000.00 , 22));
+  hosts.add(new Host("Binions Horseshoe", 049, "Rack"        , 10000.00 , 80));
+  hosts.add(new Host("Ballys"           , 191, "Rack"        , 30000.00 , 130));

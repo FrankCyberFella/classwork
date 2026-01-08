@@ -1,0 +1,35 @@
+
+<table id="studentInfoTable">
+    <tr>
+        <th>Student</th>
+        <th>First</th>
+        <th>Last</th>
+        <th></th>
+        <th>Start</th>
+    </tr>
+    <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Name</th>
+        <th>Cohort</th>
+        <th>Date</th>
+    </tr>
+    <!-- studentList is an array the .ts for this component -->
+    <tr *ngFor="let aStudent of studentList">
+        <td id="studNum">{{aStudent.studentNumber}}</td>
+        <td>{{aStudent.firstName}}</td>
+        <td>{{aStudent.lastName}}</td>
+        <td>{{aStudent.cohort}}</td>
+        <td>{{aStudent.startDate}}</td>   
+</tr>    
+</table>
+<!-- routerLink= attribute in any input control       -->
+<!-- go to this URL path when clicked                 --> 
+<!-- Clicking this button tells the Angular router to -->
+<!--      follow the path /addstudent                 -->
+<!-- (paths are stored app.routes.ts file)            -->        
+<input type="button" 
+       id="addStudentButton" 
+       value="Add Student" 
+       routerLink="/addstudent"/>
+    

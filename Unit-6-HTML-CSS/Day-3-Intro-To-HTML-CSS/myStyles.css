@@ -1,0 +1,12 @@
+/* This is a comment in CSS            */
+/* CSS defines formatting for the page */
+/* The general format: selector {
+                                  css rule;
+                                  css rule;
+                                }
+*/  
+/* for now we use html tags as selectors */
+
+html { /* style all the elements within the html tag */
+    background-color: lightgoldenrodyellow;
+}

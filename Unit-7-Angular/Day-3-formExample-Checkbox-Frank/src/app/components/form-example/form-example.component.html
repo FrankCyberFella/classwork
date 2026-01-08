@@ -1,0 +1,125 @@
+  <!-- Form to receive information about a user                                -->
+  <!-- When the submit button is clicked the data in the form TypeScript code  -->
+  <!-- We want to process data rather then end it to a API URL                 --> 
+  
+  <!-- We need to do two things:                                                                         -->
+  
+  <!-- 1. Override the standard form processing of sending to an API URL when a submit button is clicked -->
+  <!--    tell the form to run a TypeScript function when the Submit is is clicked using (ngSubmit)      --> 
+  <!--    (ngSubmit) = "TypeScriptFunction-name()"-->
+
+  <!-- 2. Be able to send the data from the form back to the TYpeScript code                             --> 
+  <!--    Use Two-Binding via [ngModel]--> 
+
+  <form (ngSubmit)="onSubmit()"> <!-- When the user clicks submit, run this TypeScript function -->
+    <!-- Ask for user name -->
+    <!-- id="name-used-to-reference-the-control-in-the-html-document"            -->
+    <!-- name="name-used-by-external-process-to-access-the-data-entered-by-user" -->
+    <!-- an example of an external process is a program or an API                -->
+    <!-- the label tag adds a prompt/word to the control for="id-for-control"    -->
+    
+    <!-- the div tag allows us to group elements for styling or spacing -->
+    <!-- Each div element starts on a new line by default               -->
+    <div>
+        <label for="fnamefield">First Name:</label>
+        <!-- Send the data entered in this field to the variable firstName in form component-->
+        <!-- ngModel connects a form field with a Typescript field using Two-Way binding    --> 
+        <input type="text" id="fnamefield" name="fname" [(ngModel)]="firstName"/>
+    </div>
+    <div>
+        <label for="lnamefield">Last Name:</label>
+        <input type="text" id="lnamefield" name="lname" [(ngModel)]="lastName"/>
+    </div>
+    <!-- type="date" generates a basic date picker on the page -->
+    <div>
+        <label for="bdate"> Birth Date:</label>
+        <input type="date" id="bdate" name="birthDate" [(ngModel)]="birthday"/>
+    </div>
+    <!-- the select tag creates a dropdown list                                 -->
+    <!-- the name="" on the select tag is the name of teh variable to hold data -->
+    <!-- the option tags within the select tag provide the choices              -->
+    <!-- the value="" in the option tag is what gets stored for the choice      -->
+    <!-- the content of the option tag is what is displayed as the choice       -->
+    <div>
+        <label for="foodfield">Cuisine Preference: </label>
+        <select name="FoodPrefs" id="foodfield" [(ngModel)]="foodPreference">
+            <option value="italian">Italian</option>
+            <option value="mexican">Mexican</option> 
+            <option value="indian">Indian</option>
+            <option value="american">USA</option>
+            <option value="chinese">Chinese</option>
+            <option value="japanese">Japanese</option>
+            <option value="vietnamese">vietnamese</option>
+            <option value="french">French</option>
+            <option value="other">Other cuisine</option>
+        </select>
+    </div>
+    <div>
+        <p>Contact Information:</p>
+        <label for="email-address">What's your email adddress:</label>
+        <input type="text" id="email-address" name="email" [(ngModel)]="emailAddress"/>
+        <!-- if you want a blank line inside a div use br tag-->
+        <br> <!-- the br tag is the only tag that does not require an end tag  -->
+        <!-- the type="radio" generates radio buttons - only one can be chosen -->
+        <!-- use the same name="" for radio buttons in the same group          -->
+        <!-- the value="" on the element is the value stored in the variable   -->
+        <!--     if the radio button is selected                               -->
+        May we contact you?
+            <input type="radio" id="emailyesfield"  name="email-preference" [(ngModel)]="sendEmail" value="yes"/>
+            <label for="emailyesfield">Sure</label>
+            <input type="radio" id="emailnofield"   name="email-preference" value="no" [(ngModel)]="sendEmail"/>
+            <label for="emailnofield">No Way!!!</label>
+    </div>
+    
+    <div>
+        <!-- checkbox tag generates a checkbox group where multiple choices allowed -->
+        <!-- the name="" is the same for all choices in a group                     -->
+        <!-- the value="" is what gets stored in te variable holding the choices    -->
+        <!-- the values are stored as a group under the name="" variable            -->
+        <!--    (next week will know this as an array)                              -->
+
+        <!-- We have to generate one element in the html for each element in array  -->
+        <!--            in the array checkbox values                                -->    
+        <p>Do you like any sports?</p>
+        <div>
+        <!-- when the this checkbox changes, run the function CheckAllOptions-->
+        <!-- the change event fire (occurs) whenever the state/content of input element changes -->
+        <input type="checkbox" (change)="CheckAllOptions()"/>
+        <span>Select All</span>
+       </div>
+        <!-- *ngFor will process all the elements in a Typescript array             -->
+        <!-- We will generate a <div> for each element in the checkbox array        -->
+        <!-- *ngFor works like a forEach in C3 or Java                              -->
+        <!-- *ngFor is specified as an attribute on any html element                -->
+        <!-- *ngFor="let name-of-an-element of array-name"                          -->
+        <!-- *ngFor will iterate through the array assign each element to name given-->   
+        <div *ngFor="let aCheckbox of sports">
+            <!-- a check box automatically has a boolean property called checked                -->
+            <!--    the checked property is set to true if box oi checked/false if not          -->
+            <!-- We connect the checkbox to the checked property for the checkbox value         -->
+            <!-- Each checkbox on the page is connected to a specific element in the array      -->  
+            <!-- [value] sets the value for the checkbox (the value property of array element)  -->  
+            <!-- [ngModelOptions]="standalone:true"  tells Angular to treat the control as      --> 
+            <!--                                     a separate entity                          -->
+            <!--                                     We use it so checkbox values are displayed -->                                          
+            <input type="checkbox"
+                   [(ngModel)] = "aCheckbox.checked" 
+                   [value] = "aCheckbox.value"
+                   [ngModelOptions]="{standalone: true}"
+            />       
+            <span>{{aCheckbox.name}}</span>
+        </div>      
+
+
+    </div>
+    <div>
+        <br>  
+        <!-- type="submit" generates a submit button                            -->  
+        <!-- a submit button send the data from the form to the URL specified   -->
+        <!--          in the action="" attribute on the form tag                -->
+        <!--          using the request type specified in method="" on the form -->
+        <!-- the value="" what is displayed in the button                       -->
+         <p>Button Clicked: {{buttonClicked}}</p>
+        <input type="submit" value="Click to Submit"/> 
+    </div>
+    </form>

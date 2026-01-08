@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+/* Styling to be applied to all components in the app                        */
+/* Common styling to set look and feel of all pages                          */
+/*  component-name.css has styling for one particular component              */
+
+/* Order applying styles:
+        styles.css
+        component.css
+        <style> tag in html
+        style= attribute in a tag
+*/
+

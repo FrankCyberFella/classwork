@@ -1,0 +1,7 @@
+  //                      casino-name         dealer-name              game    years-experience
+  dealers.add(new Dealer("Harveys Casino"   , "Patriccio Riodini"   , "Craps"    , 4));
+  dealers.add(new Dealer("Binions Horseshoe", "Fred Stipinski"      , "Craps"    , 8));
+  dealers.add(new Dealer("Binions Horseshoe", "Stickman Nelson"     , "Blackjack", 10));
+  dealers.add(new Dealer("Trump Plaza"      , "Lance Lu"            , "Roulette" , 5));
+  dealers.add(new Dealer("Caesers Palace"   , "Arthur Andersen"     , "Blackjack", 2));
+  dealers.add(new Dealer("Ballys"           , "Frances Zielinski"   , "Craps"    , 1));

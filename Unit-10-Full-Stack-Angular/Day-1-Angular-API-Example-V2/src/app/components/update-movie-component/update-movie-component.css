@@ -1,0 +1,27 @@
+h1 {
+    margin-left: 20px;
+}
+
+#theForm {
+ margin-left: 15px;
+}
+
+
+#buttonarea {
+    padding: 5px;
+    justify-items: auto;
+}
+.abutton {
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 2px;
+    color: white;
+}
+#submitButton {
+    background-color:forestgreen;
+    border-color: forestgreen;
+}
+#cancelButton {
+    background-color: deeppink;
+    border-color: deeppink;
+}
